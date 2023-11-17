@@ -16,8 +16,8 @@ export const useReviewStore = defineStore('review', () => {
 
   //게시글 한개
   const review = ref({})
-  const getReview = function (id) {
-    axios.get(`${REST_REVIEW_API}/${id}`)
+  const getReview = function (rid) {
+    axios.get(`${REST_REVIEW_API}/${rid}`)
       .then((response) => {
       review.value = response.data
     })
@@ -34,21 +34,18 @@ export const useReviewStore = defineStore('review', () => {
       data: review
     })
       .then((res) => {
-        //response 응답으로 들어온 게시글의 id를 이용해서
-        //상세보기로 바로 점프도 가넝이야~~
-        // /review/:vid/:id'
-        router.push({ name: 'review'})
+        router.push({ path: `/${review.youtubeId}`})
       })
       .catch((err) => {
       console.log(err)
     })
   }
 
-  const updateReview = function (vid) {
+  const updateReview = function (youtubeId) {
     axios.put(REST_REVIEW_API, review.value)
       .then(() => {
         // console.log(res.data);
-      router.push({path: `/${vid}`})
+      router.push({path: `/${youtubeId}`})
     })
   }
 

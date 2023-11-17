@@ -35,7 +35,7 @@ const router = useRouter();
 const rstore = useReviewStore();
 
 onMounted(() => {
-    rstore.getReview(route.params.id);
+    rstore.getReview(route.params.rid);
 });
 
 const moveUpdate = function () {
@@ -44,10 +44,10 @@ const moveUpdate = function () {
 
 const deleteReview = function () {
     axios
-        .delete(`http://localhost:8080/api/Review/${route.params.id}`)
+        .delete(`http://localhost:8080/api/Review/${route.params.rid}`)
         .then(() => {
             alert("리뷰가 삭제 되었습니다.")
-            router.push({ path: `/${route.params.vid}` });
+            router.push({ path: `/${route.params.youtubeId}` });
         })
         .catch(() => { });
 };

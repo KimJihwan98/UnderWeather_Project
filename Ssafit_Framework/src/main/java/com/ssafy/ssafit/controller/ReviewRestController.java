@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.ssafy.ssafit.model.service.ReviewService;
 
 import springfox.documentation.annotations.ApiIgnore;
 
+@CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class ReviewRestController {
@@ -40,7 +42,8 @@ public class ReviewRestController {
 	}
 
 	@PostMapping("/Review")
-	public ResponseEntity<?> write(Review Review) {
+	public ResponseEntity<?> write(@RequestBody Review Review) {
+		System.out.println(Review);
 		reviewService.createReview(Review);
 		return new ResponseEntity<Review>(Review, HttpStatus.CREATED);
 	}

@@ -25,8 +25,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("SSAFY 10기 SSAFIT REST API")
-                .description("게시판을 위한 레스트풀한 서버 입니다.")
+                .title("Wellness Community")
+                .description("프로젝트입니다.")
                 .version("0.1")
                 .build();
     }

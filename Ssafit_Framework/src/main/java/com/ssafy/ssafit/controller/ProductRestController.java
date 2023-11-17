@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
-public class UserRestController {
+public class ProductRestController {
 	@Autowired
 	private UserService userService;
 	

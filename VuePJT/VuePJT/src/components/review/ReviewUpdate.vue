@@ -30,7 +30,8 @@ const route = useRoute();
 
 const updateReview = function () {
     alert("리뷰가 수정되었습니다.")
-    rstore.updateReview(route.params.vid)
+    console.log(route.params.youtubeId);
+    rstore.updateReview(route.params.youtubeId)
 }
 const backButton = function () {
     router.go(-1);

@@ -34,8 +34,7 @@ const review = ref({
     title: '',
     writer: '',
     content: '',
-    regDate: '',
-    youtubeId: `${route.params.vid}`
+    youtubeId: `${route.params.youtubeId}`
 })
 
 const createReview = function () {

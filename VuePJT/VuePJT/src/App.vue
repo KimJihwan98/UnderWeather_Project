@@ -38,7 +38,7 @@ const logout = () => {
 
 const loginUser = (loginUser) => {
   // user 정보 요청 api 주소
-  const API_URL = `http://localhost:8080/api/list`;
+  const API_URL = `http://localhost:8080/api/User/list`;
 
   console.log('loginUser', loginUser);
 

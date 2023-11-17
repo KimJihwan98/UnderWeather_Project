@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import router from '@/router'
 
-const REST_VIDEO_API = `http://localhost:8080/api`;
+const REST_VIDEO_API = `http://localhost:8080/api/Video`;
 
 export const useVideoStore = defineStore('video', () => {
   const videoList = ref([])

@@ -33,7 +33,7 @@ const router = createRouter({
       
     },
     {
-      path: "/:id",
+      path: "/:youtubeId",
       name: "videoDetail",
       component: VideoDetail
     },
@@ -43,17 +43,17 @@ const router = createRouter({
       component: ReviewView
     },
     {
-      path: '/review/:vid/:id',
+      path: '/review/:youtubeId/:rid',
       name: 'reviewDetail',
       component: ReviewDetail
     },
     {
-      path: '/review/:vid/:id/update',
+      path: '/review/:youtubeId/:rid/update',
       name: 'reviewUpdate',
       component: ReviewUpdate
     },
     {
-      path: '/review/:vid/create',
+      path: '/review/:youtubeId/create',
       name: 'reviewCreate',
       component: ReviewCreate
     },

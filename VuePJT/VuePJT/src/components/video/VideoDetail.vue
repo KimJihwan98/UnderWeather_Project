@@ -37,7 +37,7 @@
             <tr v-for="review in rstore.reviewList" :key="review.id">
                 <td>{{ review.id }}</td>
                 <td>
-                    <RouterLink :to="`/review/${videoID}/${review.id}`">{{ review.title }}</RouterLink>
+                    <RouterLink :to="`/review/${youtubeId}/${review.id}`">{{ review.title }}</RouterLink>
                 </td>
                 <td>{{ review.writer }}</td>
                 <td>{{ review.content }}</td>
@@ -63,21 +63,21 @@ const router = useRouter();
 const route = useRoute();
 
 const videoURL = computed(() => {
-    return `https://www.youtube.com/embed/${videoID}`
+    return `https://www.youtube.com/embed/${youtubeId}`
 })
 
-const videoID = route.params.id;
+const youtubeId = route.params.youtubeId;
 
-vstore.getVideo(videoID);
+vstore.getVideo(youtubeId);
 
 // Review리스트
 
 onMounted(() => {
-    rstore.getReviewList(videoID)
+    rstore.getReviewList(youtubeId)
 })
 
 const createReview = function () {
-    router.push({ path: `/review/${videoID}/create` });
+    router.push({ path: `/review/${youtubeId}/create` });
 };
 
 
