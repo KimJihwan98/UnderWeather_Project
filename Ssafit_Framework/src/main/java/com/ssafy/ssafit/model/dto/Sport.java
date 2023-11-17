@@ -1,89 +1,39 @@
 package com.ssafy.ssafit.model.dto;
 
-import java.util.Date;
 
 public class Sport {
-	private static int no = 1; //클래스 변수
-	private int id;
-	private String title;
-	private String writer;
-	private String content;
-	private String regDate;
-	private String youtubeId;
-	private int viewCnt;
+	private String spName;
+	private Object spImg;
 
 	public Sport() {
 	}
 
-	public Sport(String title, String writer, String content, String youtubeId) {
+	public Sport(String spName, Object spImg) {
 		super();
-		this.id = no++;
-		this.title = title;
-		this.writer = writer;
-		this.content = content;
-		this.youtubeId = youtubeId;
-		this.regDate = new Date().toString();
+		this.spName = spName;
+		this.spImg = spImg;
 	}
 
-	public int getId() {
-		return id;
+	public String getSpName() {
+		return spName;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setSpName(String spName) {
+		this.spName = spName;
 	}
 
-	public String getTitle() {
-		return title;
+	public Object getSpImg() {
+		return spImg;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-	
-	public String getYoutubeId() {
-		return youtubeId;
-	}
-
-	public void setYoutubeId(String youtubeId) {
-		this.youtubeId = youtubeId;
-	}
-
-	public int getViewCnt() {
-		return viewCnt;
-	}
-
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
+	public void setSpImg(Object spImg) {
+		this.spImg = spImg;
 	}
 
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", viewCnt=" + viewCnt + "]";
+		return "Sport [spName=" + spName + ", spImg=" + spImg + "]";
 	}
+
+	
 }

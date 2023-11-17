@@ -2,21 +2,15 @@ package com.ssafy.ssafit.model.service;
 
 import java.util.List;
 
-import com.ssafy.ssafit.model.dto.Review;
+import com.ssafy.ssafit.model.dto.Product;
 
 public interface ProductService {
-	// 댓글 등록
-	void createReview(Review review);
+	// 상품 등록
+		void registProduct(Product product);
 
-	// 댓글 전체 조회
-	List<Review> readReviewList(String youtubeId);
+		// 상품 조회
+		List<Product> productList(String youtubeId);
 
-	// 댓글 상세 조회
-	Review readReview(int id);
-
-	// 댓글 수정
-	void updateReview(Review Review);
-
-	// 댓글 삭제
-	void deleteReview(int id);
+		// 상품 삭제
+		void deleteProduct(String pId);
 }

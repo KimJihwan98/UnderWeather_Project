@@ -5,40 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ssafy.ssafit.model.dao.ReviewDao;
+import com.ssafy.ssafit.model.dao.ProductDao;
+import com.ssafy.ssafit.model.dto.Product;
 import com.ssafy.ssafit.model.dto.Review;
 
 @Service
-public class ProductServiceImpl implements ReviewService {
-	private ReviewDao reviewDao;
+public class ProductServiceImpl implements ProductService {
+	private ProductDao productDao;
 	
-	@Autowired
-	public void setReviewDao(ReviewDao reviewDao) {
-		this.reviewDao = reviewDao;
-	}
-	
+//	@Autowired
+//	public void setReviewDao(ReviewDao reviewDao) {
+//		this.reviewDao = reviewDao;
+//	}
+//	
 	@Override
-	public void createReview(Review review) {
-		reviewDao.insertReview(review);
+	public void registProduct(Product product) {//상품 등록
+		productDao.registProduct(product);
 	}
 
 	@Override
-	public List<Review> readReviewList(String youtubeId) {
-		return reviewDao.selectAll(youtubeId);
+	public List<Product> productList(String youtubeId){//상품 조회
+		return productDao.productList(youtubeId);
 	}
 
 	@Override
-	public Review readReview(int id) {
-		return reviewDao.selectOne(id);
+	public void deleteProduct(String pId) {//상품 삭제
+		productDao.deleteProduct(pId);
 	}
 
-	@Override
-	public void updateReview(Review Review) {
-		reviewDao.updateReview(Review);
-	}
-
-	@Override
-	public void deleteReview(int id) {
-		reviewDao.deleteReview(id);
-	}
 }

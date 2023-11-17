@@ -8,65 +8,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.ssafit.model.dto.User;
-import com.ssafy.ssafit.model.service.UserService;
+import com.ssafy.ssafit.model.dto.Product;
+import com.ssafy.ssafit.model.dto.Review;
+import com.ssafy.ssafit.model.service.ProductService;
 
 import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class ProductRestController {
 	@Autowired
-	private UserService userService;
+	private ProductService productService;
 	
-	@GetMapping("/User/list")
-	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = User.class)
-	public ResponseEntity<?> selectAll() {
-		try {
-			List<User> users = userService.selectAll();
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-			}
-		} catch (Exception e) {
-			return null;
-		}
+	@GetMapping("/Product") // R : 상품 조회
+	public ResponseEntity<?> productList(String youtubeId) {
+		List<Product> list = productService.productList(youtubeId);
+		if (list == null || list.size() == 0)
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<List<Product>>(list, HttpStatus.OK);
+	}
+
+	
+	@PostMapping("/Product") // C: 상품 등록
+	public ResponseEntity<?> registProduct(@RequestBody Product product) {
+		System.out.println(product);
+		productService.registProduct(product);
+		return new ResponseEntity<Product>(product, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/User/signup")
-	public ResponseEntity<?> signup(User user) {
-		int result = userService.signup(user);
-		
-		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
-	}
-	
-	@PostMapping("/User/login")
-	public ResponseEntity<?> login(User user, HttpSession session) {
-		System.out.println(user);
-		User tmp = userService.login(user);
-		
-		//로그인 실패 (잘못했어)
-		if(tmp == null)
-			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
-		
-		session.setAttribute("loginUser", tmp.getName());
-		return new ResponseEntity<String>(tmp.getName(), HttpStatus.OK);
-	}
-	
-	
-	@GetMapping("/User/logout")
-	public ResponseEntity<?> logout(HttpSession session) {
-//		session.removeAttribute("loginUser");
-		session.invalidate();
-		
+	@DeleteMapping("/Product/{pId}")
+	public ResponseEntity<?> deleteProduct(@PathVariable String pId) {
+		productService.deleteProduct(pId);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
+	
+
 }

@@ -1,89 +1,81 @@
 package com.ssafy.ssafit.model.dto;
 
-import java.util.Date;
-
 public class Product {
-	private static int no = 1; //클래스 변수
-	private int id;
-	private String title;
-	private String writer;
-	private String content;
-	private String regDate;
+	private int pId;
 	private String youtubeId;
-	private int viewCnt;
+	private long price;
+	private String pUrl;
+	private String userId;
+
 
 	public Product() {
 	}
 
-	public Product(String title, String writer, String content, String youtubeId) {
+
+	public Product(int pId, String youtubeId, long price, String pUrl, String userId) {
 		super();
-		this.id = no++;
-		this.title = title;
-		this.writer = writer;
-		this.content = content;
+		this.pId = pId;
 		this.youtubeId = youtubeId;
-		this.regDate = new Date().toString();
+		this.price = price;
+		this.pUrl = pUrl;
+		this.userId = userId;
 	}
 
-	public int getId() {
-		return id;
+
+	public int getpId() {
+		return pId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	public void setpId(int pId) {
+		this.pId = pId;
 	}
 
-	public String getTitle() {
-		return title;
-	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-	
 	public String getYoutubeId() {
 		return youtubeId;
 	}
+
 
 	public void setYoutubeId(String youtubeId) {
 		this.youtubeId = youtubeId;
 	}
 
-	public int getViewCnt() {
-		return viewCnt;
+
+	public long getPrice() {
+		return price;
 	}
 
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
+
+	public void setPrice(long price) {
+		this.price = price;
 	}
+
+
+	public String getpUrl() {
+		return pUrl;
+	}
+
+
+	public void setpUrl(String pUrl) {
+		this.pUrl = pUrl;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", viewCnt=" + viewCnt + "]";
+		return "Product [pId=" + pId + ", youtubeId=" + youtubeId + ", price=" + price + ", pUrl=" + pUrl + ", userId="
+				+ userId + "]";
 	}
-}
+	
+	
+}	
