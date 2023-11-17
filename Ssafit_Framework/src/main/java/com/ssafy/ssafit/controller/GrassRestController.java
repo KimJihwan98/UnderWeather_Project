@@ -2,71 +2,61 @@ package com.ssafy.ssafit.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.ssafit.model.dto.User;
-import com.ssafy.ssafit.model.service.UserService;
+import com.ssafy.ssafit.model.dto.Grass;
+import com.ssafy.ssafit.model.service.GrassService;
 
-import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class GrassRestController {
 	@Autowired
-	private UserService userService;
-	
-	@GetMapping("/User/list")
-	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = User.class)
-	public ResponseEntity<?> selectAll() {
-		try {
-			List<User> users = userService.selectAll();
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-			}
-		} catch (Exception e) {
-			return null;
-		}
+	private GrassService grassService;
+
+	@GetMapping("/Grass")
+	public ResponseEntity<?> list(String userId) {
+		List<Grass> list = grassService.readGrassList(userId);
+		if (list == null || list.size() == 0)
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<List<Grass>>(list, HttpStatus.OK);
 	}
-	
-	@PostMapping("/User/signup")
-	public ResponseEntity<?> signup(User user) {
-		int result = userService.signup(user);
-		
-		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
+
+	@GetMapping("/Grass/{id}")
+	public ResponseEntity<?> detail(@PathVariable String gId) {
+		Grass Grass = grassService.readGrass(gId);
+		return new ResponseEntity<Grass>(Grass, HttpStatus.OK);
 	}
-	
-	@PostMapping("/User/login")
-	public ResponseEntity<?> login(User user, HttpSession session) {
-		System.out.println(user);
-		User tmp = userService.login(user);
-		
-		//로그인 실패 (잘못했어)
-		if(tmp == null)
-			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
-		
-		session.setAttribute("loginUser", tmp.getName());
-		return new ResponseEntity<String>(tmp.getName(), HttpStatus.OK);
+
+	@PostMapping("/Review")
+	public ResponseEntity<?> write(@RequestBody Grass Grass) {
+		grassService.createGrass(Grass);
+		return new ResponseEntity<Grass>(Grass, HttpStatus.CREATED);
 	}
-	
-	
-	@GetMapping("/User/logout")
-	public ResponseEntity<?> logout(HttpSession session) {
-//		session.removeAttribute("loginUser");
-		session.invalidate();
-		
+
+	@DeleteMapping("/Grass/{id}")
+	public ResponseEntity<?> delete(@PathVariable String gId) {
+		grassService.deleteGrass(gId);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+
+	@ApiIgnore
+	@PutMapping("/Grass") // JSON 형태의 데이터로 넘어왔을 떄 처리하고 싶은데?
+	public ResponseEntity<?> update(@RequestBody Grass Grass) {
+		grassService.updateGrass(Grass);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }

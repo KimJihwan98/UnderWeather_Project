@@ -2,24 +2,21 @@ package com.ssafy.ssafit.model.dao;
 
 import java.util.List;
 
-import com.ssafy.ssafit.model.dto.Review;
+import com.ssafy.ssafit.model.dto.Grass;
 
 public interface GrassDao {
-	// 댓글 등록
-	void insertReview(Review review);
+	// 잔디 등록
+	void insertGrass(Grass grass);
 
-	// 댓글 전체 조회
-	List<Review> selectAll(String youtubeId);
+	// 잔디 전체 조회
+	List<Grass> selectAll(String userId);
 
-	// 댓글 상세 조회
-	Review selectOne(int id);
+	// 잔디 상세 조회
+	Grass selectOne(String gId);
 
-	// 댓글 수정
-	void updateReview(Review review);
+	// 잔디 수정
+	void updateGrass(Grass grass);
 
-	// 댓글 삭제
-	void deleteReview(int id);
-
-	// 조회수 증가
-	void updateViewCnt(int id);
+	// 잔디 삭제
+	void deleteGrass(String gId);
 }
