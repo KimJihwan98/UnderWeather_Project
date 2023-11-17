@@ -5,40 +5,40 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ssafy.ssafit.model.dao.ReviewDao;
-import com.ssafy.ssafit.model.dto.Review;
+import com.ssafy.ssafit.model.dao.GrassDao;
+import com.ssafy.ssafit.model.dto.Grass;
 
 @Service
-public class GrassServiceImpl implements ReviewService {
-	private ReviewDao reviewDao;
+public class GrassServiceImpl implements GrassService {
+	private GrassDao grassDao;
 	
 	@Autowired
-	public void setReviewDao(ReviewDao reviewDao) {
-		this.reviewDao = reviewDao;
+	public void setGrassDao(GrassDao grassDao) {
+		this.grassDao = grassDao;
 	}
 	
 	@Override
-	public void createReview(Review review) {
-		reviewDao.insertReview(review);
+	public void createGrass(Grass grass) {
+		grassDao.insertGrass(grass);
 	}
 
 	@Override
-	public List<Review> readReviewList(String youtubeId) {
-		return reviewDao.selectAll(youtubeId);
+	public List<Grass> readGrassList(String userId) {
+		return grassDao.selectAll(userId);
 	}
 
 	@Override
-	public Review readReview(int id) {
-		return reviewDao.selectOne(id);
+	public Grass readGrass(String gId) {
+		return grassDao.selectOne(gId);
 	}
 
 	@Override
-	public void updateReview(Review Review) {
-		reviewDao.updateReview(Review);
+	public void updateGrass(Grass Grass) {
+		grassDao.updateGrass(Grass);
 	}
 
 	@Override
-	public void deleteReview(int id) {
-		reviewDao.deleteReview(id);
+	public void deleteGrass(String gId) {
+		grassDao.deleteGrass(gId);
 	}
 }

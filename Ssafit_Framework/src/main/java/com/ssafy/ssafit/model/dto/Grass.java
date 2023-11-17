@@ -3,50 +3,57 @@ package com.ssafy.ssafit.model.dto;
 import java.util.Date;
 
 public class Grass {
-	private static int no = 1; //클래스 변수
-	private int id;
+	private String gId;
+	private String userId;
+	private int index;
 	private String title;
-	private String writer;
+	private Object img;
 	private String content;
 	private String regDate;
-	private String youtubeId;
-	private int viewCnt;
 
 	public Grass() {
 	}
 
-	public Grass(String title, String writer, String content, String youtubeId) {
-		super();
-		this.id = no++;
+	public Grass(String gId, String userId, int index, String title, Object img, String content) {
+		this.gId = gId;
+		this.userId = userId;
+		this.index = index;
 		this.title = title;
-		this.writer = writer;
+		this.img = img;
 		this.content = content;
-		this.youtubeId = youtubeId;
 		this.regDate = new Date().toString();
 	}
 
-	public int getId() {
-		return id;
+	public String getgId() {
+		return gId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setgId(String gId) {
+		this.gId = gId;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getWriter() {
-		return writer;
+	public int getgIndex() {
+		return index;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setgIndex(int gIndex) {
+		this.index = gIndex;
+	}
+
+	public Object getImg() {
+		return img;
+	}
+
+	public void setImg(Object img) {
+		this.img = img;
 	}
 
 	public String getContent() {
@@ -56,7 +63,7 @@ public class Grass {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
 	public String getRegDate() {
 		return regDate;
 	}
@@ -64,26 +71,13 @@ public class Grass {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
-	public String getYoutubeId() {
-		return youtubeId;
-	}
-
-	public void setYoutubeId(String youtubeId) {
-		this.youtubeId = youtubeId;
-	}
-
-	public int getViewCnt() {
-		return viewCnt;
-	}
-
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
-	}
-
-	@Override
-	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", viewCnt=" + viewCnt + "]";
-	}
 }

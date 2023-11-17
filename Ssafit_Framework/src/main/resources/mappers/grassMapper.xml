@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.ssafit.model.dao.ReviewDao">
-    <insert id="insertReview" parameterType="Review">
-		insert into review (title, writer, content, youtubeId)
-		values (#{title}, #{writer}, #{content}, #{youtubeId})
+<mapper namespace="com.ssafy.ssafit.model.dao.GrassDao">
+    <insert id="insertGrass" parameterType="Grass">
+		insert into grass (title, img, content, userId)
+		values (#{title}, #{img}, #{content}, #{userId})
     </insert>
     
-    <select id="selectAll" parameterType="string" resultType="Review">
-    	select * from review where youtubeId=#{youtubeId}            
+    <select id="selectAll" parameterType="string" resultType="Grass">
+    	select * from grass where userId=#{userId}            
     </select>
     
-    <select id="selectOne" parameterType="int" resultType="Review">
-    	select * from review where id=#{id}            
+    <select id="selectOne" parameterType="string" resultType="Grass">
+    	select * from grass where gId=#{gId}            
     </select>
     
-    <update id="updateReview" parameterType="Review">
-    	update review set title = #{title}, content = #{content} where id = #{id}
+    <update id="updateGrass" parameterType="Grass">
+    	update grass set title = #{title}, content = #{content} where gId = #{gId}
     </update>
      
-    <delete id="deleteReview" parameterType="int">
-    	delete from review where id = #{id}
+    <delete id="deleteReview" parameterType="string">
+    	delete from grass where gId = #{gId}
     </delete> 
 </mapper>
