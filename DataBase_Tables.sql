@@ -8,13 +8,13 @@ CREATE TABLE `Video` (
   `fitPartName` VARCHAR(20) NOT NULL,
   `channelName` VARCHAR(20) NOT NULL,
   `url` VARCHAR(100) NOT NULL,
-  `viewCnt` LONG
+  `viewCnt` LONG NOT NULL,
+  `isRegist` BOOLEAN NOT NULL
 );
 
-CREATE TABLE `Exercise` (
-  `exName` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `fitPartName` VARCHAR(20) NOT NULL,
-  `exImg` LONGBLOB NOT NULL
+CREATE TABLE `Sports` (
+  `spName` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `spImg` LONGBLOB NOT NULL
 );
 
 CREATE TABLE `User` (
@@ -31,7 +31,7 @@ CREATE TABLE `Review` (
   `youtubeID` VARCHAR(50) NOT NULL,
   `userID` VARCHAR(20) NOT NULL,
   `content` LONGTEXT NOT NULL,
-  `regDate` DATETIME DEFAULT NOW(),
+  `regDate` DATETIME DEFAULT NOW() NOT NULL,
   `viewCnt` LONG,
   FOREIGN KEY (`youtubeID`) REFERENCES `Video`(`youtubeId`),
   FOREIGN KEY (`userID`) REFERENCES `User`(`userId`)
@@ -41,16 +41,20 @@ CREATE TABLE `Grass` (
   `gId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `userId` VARCHAR(20) NOT NULL,
   `index` INT NOT NULL,
+  `title` VARCHAR(50) NOT NULL,
   `img` LONGBLOB NOT NULL,
   `content` LONGTEXT,
+  `regDate` DATETIME DEFAULT NOW() NOT NULL,
   FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
 );
 
 CREATE TABLE `Product` (
-  `pId` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `pId` VARCHAR(50) PRIMARY KEY NOT NULL, 
   `youtubeId` VARCHAR(50) NOT NULL,
   `price` LONG NOT NULL,
   `pUrl` VARCHAR(100) NOT NULL,
+  `userId` VARCHAR(20) NOT NULL,
+  FOREIGN KEY(`userId`) REFERENCES `User`(`userId`),
   FOREIGN KEY (`youtubeId`) REFERENCES `VIdeo`(`youtubeId`)
 );
 
@@ -69,4 +73,4 @@ VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", "2023-10-27", 0),
 ("힘들어요", 'gMaB-fG4u4g', "ssafy02", "힘든데 효과 최고", "2023-10-27", 0),
 ("효과 짱", 'swRNeYw1JkY', "ssafy03", "효과 최고", "2023-10-27", 0);
 
-
+select * from exercise, grass, product, review, user, video;
