@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.ssafit.model.dao.ReviewDao">
-    <insert id="insertReview" parameterType="Review">
-		insert into review (title, writer, content, youtubeId)
-		values (#{title}, #{writer}, #{content}, #{youtubeId})
-    </insert>
+<mapper namespace="com.ssafy.ssafit.model.dao.SportDao">
+
     
-    <select id="selectAll" parameterType="string" resultType="Review">
-    	select * from review where youtubeId=#{youtubeId}            
+    <select id="selectAll" parameterType="string" resultType="Sport">
+        select * from Sport where spName=#{spName}            
     </select>
     
-    <select id="selectOne" parameterType="int" resultType="Review">
-    	select * from review where id=#{id}            
+    <select id="selectOne" parameterType="string" resultType="Sport">
+        select * from Sport where spName=#{spName}            
     </select>
     
-    <update id="updateReview" parameterType="Review">
-    	update review set title = #{title}, content = #{content} where id = #{id}
-    </update>
-     
-    <delete id="deleteReview" parameterType="int">
-    	delete from review where id = #{id}
-    </delete> 
+
 </mapper>

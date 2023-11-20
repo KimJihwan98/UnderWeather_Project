@@ -41,7 +41,7 @@ public class GrassRestController {
 		return new ResponseEntity<Grass>(Grass, HttpStatus.OK);
 	}
 
-	@PostMapping("/Review")
+	@PostMapping("/Grass")
 	public ResponseEntity<?> write(@RequestBody Grass Grass) {
 		grassService.createGrass(Grass);
 		return new ResponseEntity<Grass>(Grass, HttpStatus.CREATED);

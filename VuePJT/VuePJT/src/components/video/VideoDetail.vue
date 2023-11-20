@@ -34,12 +34,12 @@
                 <th>작성일</th>
                 <th>조회수</th>
             </tr>
-            <tr v-for="review in rstore.reviewList" :key="review.id">
-                <td>{{ review.id }}</td>
+            <tr v-for="(review, index) in rstore.reviewList" :key="review.rId">
+                <td>{{ index+1 }}</td>
                 <td>
-                    <RouterLink :to="`/review/${youtubeId}/${review.id}`">{{ review.title }}</RouterLink>
+                    <RouterLink :to="`/review/${youtubeId}/${review.rId}`">{{ review.title }}</RouterLink>
                 </td>
-                <td>{{ review.writer }}</td>
+                <td>{{ review.userId }}</td>
                 <td>{{ review.content }}</td>
                 <td>{{ review.regDate }}</td>
                 <td>{{ review.viewCnt }}</td>

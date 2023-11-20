@@ -12,14 +12,14 @@ public interface ReviewDao {
 	List<Review> selectAll(String youtubeId);
 
 	// 댓글 상세 조회
-	Review selectOne(int id);
+	Review selectOne(int rId);
 
 	// 댓글 수정
 	void updateReview(Review review);
 
 	// 댓글 삭제
-	void deleteReview(int id);
+	void deleteReview(int rId);
 
 	// 조회수 증가
-	void updateViewCnt(int id);
+	void updateViewCnt(int rId);
 }

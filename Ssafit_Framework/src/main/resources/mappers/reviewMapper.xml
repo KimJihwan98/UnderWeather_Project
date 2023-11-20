@@ -3,8 +3,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.ssafit.model.dao.ReviewDao">
     <insert id="insertReview" parameterType="Review">
-		insert into review (title, writer, content, youtubeId)
-		values (#{title}, #{writer}, #{content}, #{youtubeId})
+		insert into review (title, userId, content, youtubeId)
+		values (#{title}, #{userId}, #{content}, #{youtubeId})
     </insert>
     
     <select id="selectAll" parameterType="string" resultType="Review">
@@ -12,14 +12,14 @@
     </select>
     
     <select id="selectOne" parameterType="int" resultType="Review">
-    	select * from review where id=#{id}            
+    	select * from review where rId=#{rId}            
     </select>
     
     <update id="updateReview" parameterType="Review">
-    	update review set title = #{title}, content = #{content} where id = #{id}
+    	update review set title = #{title}, content = #{content} where rId = #{rId}
     </update>
      
     <delete id="deleteReview" parameterType="int">
-    	delete from review where id = #{id}
+    	delete from review where rId = #{rId}
     </delete> 
 </mapper>

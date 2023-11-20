@@ -35,9 +35,9 @@ public class ReviewRestController {
 		return new ResponseEntity<List<Review>>(list, HttpStatus.OK);
 	}
 
-	@GetMapping("/Review/{id}")
-	public ResponseEntity<?> detail(@PathVariable int id) {
-		Review Review = reviewService.readReview(id);
+	@GetMapping("/Review/{rId}")
+	public ResponseEntity<?> detail(@PathVariable int rId) {
+		Review Review = reviewService.readReview(rId);
 		return new ResponseEntity<Review>(Review, HttpStatus.OK);
 	}
 
@@ -48,9 +48,9 @@ public class ReviewRestController {
 		return new ResponseEntity<Review>(Review, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/Review/{id}")
-	public ResponseEntity<?> delete(@PathVariable int id) {
-		reviewService.deleteReview(id);
+	@DeleteMapping("/Review/{rId}")
+	public ResponseEntity<?> delete(@PathVariable int rId) {
+		reviewService.deleteReview(rId);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

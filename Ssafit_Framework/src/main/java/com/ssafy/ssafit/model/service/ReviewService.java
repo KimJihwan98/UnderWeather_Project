@@ -12,11 +12,11 @@ public interface ReviewService {
 	List<Review> readReviewList(String youtubeId);
 
 	// 댓글 상세 조회
-	Review readReview(int id);
+	Review readReview(int rId);
 
 	// 댓글 수정
 	void updateReview(Review Review);
 
 	// 댓글 삭제
-	void deleteReview(int id);
+	void deleteReview(int rId);
 }

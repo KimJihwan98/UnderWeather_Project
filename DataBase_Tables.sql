@@ -8,53 +8,49 @@ CREATE TABLE `Video` (
   `fitPartName` VARCHAR(20) NOT NULL,
   `channelName` VARCHAR(20) NOT NULL,
   `url` VARCHAR(100) NOT NULL,
-  `viewCnt` LONG NOT NULL,
-  `isRegist` BOOLEAN NOT NULL
+  `viewCnt` LONG
 );
 
-CREATE TABLE `Sports` (
-  `spName` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `spImg` LONGBLOB NOT NULL
+CREATE TABLE Sport (
+  spName VARCHAR(50) PRIMARY KEY NOT NULL,
+  spImg LONGBLOB
 );
 
 CREATE TABLE `User` (
   `userId` VARCHAR(20) PRIMARY KEY NOT NULL,
   `pw` VARCHAR(50) NOT NULL,
-  `preferExercise` VARCHAR(50),
+  `preferSport` VARCHAR(50),
   `location` VARCHAR(50),
-   FOREIGN KEY (`preferExercise`) REFERENCES `Exercise`(`exName`) 
+   FOREIGN KEY (`preferSport`) REFERENCES `Sport`(`spName`) 
 );
 
 CREATE TABLE `Review` (
   `rId` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `title` VARCHAR(50) NOT NULL,
-  `youtubeID` VARCHAR(50) NOT NULL,
-  `userID` VARCHAR(20) NOT NULL,
+  `youtubeId` VARCHAR(50) NOT NULL,
+  `userId` VARCHAR(20) NOT NULL,
   `content` LONGTEXT NOT NULL,
-  `regDate` DATETIME DEFAULT NOW() NOT NULL,
+  `regDate` DATETIME DEFAULT NOW(),
   `viewCnt` LONG,
-  FOREIGN KEY (`youtubeID`) REFERENCES `Video`(`youtubeId`),
-  FOREIGN KEY (`userID`) REFERENCES `User`(`userId`)
+  FOREIGN KEY (`youtubeId`) REFERENCES `Video`(`youtubeId`),
+  FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
 );
 
 CREATE TABLE `Grass` (
   `gId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `userId` VARCHAR(20) NOT NULL,
   `index` INT NOT NULL,
+  `img` LONGBLOB,
   `title` VARCHAR(50) NOT NULL,
-  `img` LONGBLOB NOT NULL,
   `content` LONGTEXT,
-  `regDate` DATETIME DEFAULT NOW() NOT NULL,
   FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
 );
 
 CREATE TABLE `Product` (
-  `pId` VARCHAR(50) PRIMARY KEY NOT NULL, 
+  `pId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `youtubeId` VARCHAR(50) NOT NULL,
   `price` LONG NOT NULL,
   `pUrl` VARCHAR(100) NOT NULL,
-  `userId` VARCHAR(20) NOT NULL,
-  FOREIGN KEY(`userId`) REFERENCES `User`(`userId`),
   FOREIGN KEY (`youtubeId`) REFERENCES `VIdeo`(`youtubeId`)
 );
 
@@ -68,9 +64,26 @@ VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵�
 ("PjGcOP-TQPE", "11자복근 복부 최고의 운동 [복근 핵매운맛]", "복부", "ThankyouBUBU", "https://www.youtube.com/embed/PjGcOP-TQPE", 0),
 ("7TLk7pscICk", "(Sub)누워서하는 5분 복부운동!! 효과보장! (매일 2주만 해보세요!)", "복부", "SomiFit", "https://www.youtube.com/embed/7TLk7pscICk", 0);
 
-INSERT INTO Review(title,  youtubeID, userID, content, regDate, viewCnt)
-VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", "2023-10-27", 0),
-("힘들어요", 'gMaB-fG4u4g', "ssafy02", "힘든데 효과 최고", "2023-10-27", 0),
-("효과 짱", 'swRNeYw1JkY', "ssafy03", "효과 최고", "2023-10-27", 0);
+INSERT INTO Sport(spName, spImg)
+VALUES ("축구", NULL);
 
-select * from exercise, grass, product, review, user, video;
+INSERT INTO User(userId,  pw, preferSport, location)
+VALUES ("cha", '1234', "축구", "청량리");
+
+INSERT INTO User(userId,  pw, preferSport, location)
+VALUES ("ssafy01", '1234', "축구", "청량리"),
+("ssafy02", '1234', "축구", "청량리"),
+("ssafy03", '1234', "축구", "청량리");
+
+INSERT INTO Review(title,  youtubeId, userId, content, viewCnt)
+VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", 0),
+("힘들어요", 'gMaB-fG4u4g', "ssafy02", "힘든데 효과 최고",  0),
+("효과 짱", 'swRNeYw1JkY', "ssafy03", "효과 최고", 0);
+
+
+select * from Video;
+select * from User;
+select * from Sport;
+select * from Review;
+select * from Product;
+select * from Grass;

@@ -12,12 +12,13 @@ export const useReviewStore = defineStore('review', () => {
       .then((response) => {
       reviewList.value = response.data;
       })
+      console.log(reviewList);
   }
 
   //게시글 한개
   const review = ref({})
-  const getReview = function (rid) {
-    axios.get(`${REST_REVIEW_API}/${rid}`)
+  const getReview = function (rId) {
+    axios.get(`${REST_REVIEW_API}/${rId}`)
       .then((response) => {
       review.value = response.data
     })
@@ -31,9 +32,10 @@ export const useReviewStore = defineStore('review', () => {
       headers: {
         "Content-Type": "application/json"
       },
-      data: review
+      data: review,
     })
-      .then((res) => {
+    .then((res) => {
+        console.log(res)
         router.push({ path: `/${review.youtubeId}`})
       })
       .catch((err) => {

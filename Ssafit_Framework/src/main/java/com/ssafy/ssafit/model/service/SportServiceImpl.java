@@ -5,40 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ssafy.ssafit.model.dao.ReviewDao;
-import com.ssafy.ssafit.model.dto.Review;
+import com.ssafy.ssafit.model.dao.SportDao;
+import com.ssafy.ssafit.model.dto.Sport;
 
 @Service
-public class SportServiceImpl implements ReviewService {
-	private ReviewDao reviewDao;
-	
-	@Autowired
-	public void setReviewDao(ReviewDao reviewDao) {
-		this.reviewDao = reviewDao;
-	}
-	
-	@Override
-	public void createReview(Review review) {
-		reviewDao.insertReview(review);
-	}
+public class SportServiceImpl implements SportService {
+    private SportDao sportDao;
+    
+    @Autowired
+    public void setSportDao(SportDao sportDao) {
+        this.sportDao = sportDao;
+    }
+    
 
-	@Override
-	public List<Review> readReviewList(String youtubeId) {
-		return reviewDao.selectAll(youtubeId);
-	}
+    @Override
+    public List<Sport> selectAll(String spName) {
+        return sportDao.selectAll(spName);
+    }
 
-	@Override
-	public Review readReview(int id) {
-		return reviewDao.selectOne(id);
-	}
+    @Override
+    public Sport selectOne(String spName) {
+        return sportDao.selectOne(spName);
+    }
 
-	@Override
-	public void updateReview(Review Review) {
-		reviewDao.updateReview(Review);
-	}
-
-	@Override
-	public void deleteReview(int id) {
-		reviewDao.deleteReview(id);
-	}
+    
 }

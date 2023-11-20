@@ -8,8 +8,8 @@
                 <input type="text" id="title" v-model="review.title">
             </div>
             <div>
-                <label for="writer">작성자 : </label>
-                <input type="text" id="writer" v-model="review.writer">
+                <label for="userId">작성자 : </label>
+                <input type="text" id="userId" v-model="review.userId">
             </div>
             <div>
                 <label for="content">내용 : </label>
@@ -32,7 +32,7 @@ const store = useReviewStore()
     
 const review = ref({
     title: '',
-    writer: '',
+    userId: '',
     content: '',
     youtubeId: `${route.params.youtubeId}`
 })

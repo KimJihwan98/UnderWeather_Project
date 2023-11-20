@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Review {
 	private static int no = 1; //클래스 변수
-	private int id;
+	private int rId;
 	private String title;
-	private String writer;
+	private String userId;
 	private String content;
 	private String regDate;
 	private String youtubeId;
@@ -17,20 +17,20 @@ public class Review {
 
 	public Review(String title, String writer, String content, String youtubeId) {
 		super();
-		this.id = no++;
+		this.rId = no++;
 		this.title = title;
-		this.writer = writer;
+		this.userId = writer;
 		this.content = content;
 		this.youtubeId = youtubeId;
 		this.regDate = new Date().toString();
 	}
 
-	public int getId() {
-		return id;
+	public int getrId() {
+		return rId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setrId(int rId) {
+		this.rId = rId;
 	}
 
 	public String getTitle() {
@@ -41,12 +41,12 @@ public class Review {
 		this.title = title;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getContent() {
@@ -83,7 +83,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
+		return "Review [rId=" + rId + ", title=" + title + ", writer=" + userId + ", content=" + content + ", regDate="
 				+ regDate + ", viewCnt=" + viewCnt + "]";
 	}
 }

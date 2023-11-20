@@ -19,7 +19,7 @@
     	update grass set title = #{title}, content = #{content} where gId = #{gId}
     </update>
      
-    <delete id="deleteReview" parameterType="string">
+    <delete id="deleteGrass" parameterType="string">
     	delete from grass where gId = #{gId}
     </delete> 
 </mapper>

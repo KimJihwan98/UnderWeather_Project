@@ -8,7 +8,7 @@
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ rstore.review.title }} <span class="badge bg-danger">{{ rstore.review.viewCnt}}</span></h4>
                         <div class="d-flex justify-content-end">
-                            <h6 class="card-subtitle mx-3 text-body-secondary">{{ rstore.review.writer }}</h6>
+                            <h6 class="card-subtitle mx-3 text-body-secondary">{{ rstore.review.userId }}</h6>
                             <h6 class="card-subtitle text-body-secondary">{{ rstore.review.regDate }}</h6>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ const router = useRouter();
 const rstore = useReviewStore();
 
 onMounted(() => {
-    rstore.getReview(route.params.rid);
+    rstore.getReview(route.params.rId);
 });
 
 const moveUpdate = function () {
@@ -44,7 +44,7 @@ const moveUpdate = function () {
 
 const deleteReview = function () {
     axios
-        .delete(`http://localhost:8080/api/Review/${route.params.rid}`)
+        .delete(`http://localhost:8080/api/Review/${route.params.rId}`)
         .then(() => {
             alert("리뷰가 삭제 되었습니다.")
             router.push({ path: `/${route.params.youtubeId}` });

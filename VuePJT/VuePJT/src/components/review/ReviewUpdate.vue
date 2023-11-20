@@ -6,8 +6,8 @@
             <label for="title">Title</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="writer" placeholder="작성자" readonly v-model="rstore.review.writer">
-            <label for="writer">Writer</label>
+            <input type="text" class="form-control" id="userId" placeholder="작성자" readonly v-model="rstore.review.userId">
+            <label for="userId">작성자</label>
         </div>
         <div class="form-floating mb-3">
             <textarea class="form-control" id="content" placeholder="내용" style="height: 200px"
@@ -30,7 +30,6 @@ const route = useRoute();
 
 const updateReview = function () {
     alert("리뷰가 수정되었습니다.")
-    console.log(route.params.youtubeId);
     rstore.updateReview(route.params.youtubeId)
 }
 const backButton = function () {

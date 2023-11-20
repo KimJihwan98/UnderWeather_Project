@@ -43,12 +43,12 @@ const router = createRouter({
       component: ReviewView
     },
     {
-      path: '/review/:youtubeId/:rid',
+      path: '/review/:youtubeId/:rId',
       name: 'reviewDetail',
       component: ReviewDetail
     },
     {
-      path: '/review/:youtubeId/:rid/update',
+      path: '/review/:youtubeId/:rId/update',
       name: 'reviewUpdate',
       component: ReviewUpdate
     },

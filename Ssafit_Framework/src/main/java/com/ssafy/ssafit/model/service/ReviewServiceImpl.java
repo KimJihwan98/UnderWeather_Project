@@ -28,8 +28,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public Review readReview(int id) {
-		return reviewDao.selectOne(id);
+	public Review readReview(int rId) {
+		return reviewDao.selectOne(rId);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void deleteReview(int id) {
-		reviewDao.deleteReview(id);
+	public void deleteReview(int rId) {
+		reviewDao.deleteReview(rId);
 	}
 }
