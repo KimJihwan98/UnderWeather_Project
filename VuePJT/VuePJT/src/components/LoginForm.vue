@@ -3,7 +3,7 @@
       <h2>로그인</h2>
       <fieldset class="text-center">
         <label for="id">아이디</label>
-        <input type="text" id="id" v-model="id" class="view" /><br />
+        <input type="text" id="id" v-model="userId" class="view" /><br />
         <label for="password">비밀번호</label>
         <input
           type="password"
@@ -19,14 +19,14 @@
   <script setup>
   import { ref } from "vue";
   
-  const id = ref("");
+  const userId = ref("");
   const password = ref("");
   
   const emit = defineEmits(["login-user"]);
   
   const login = () => {
     let user = {
-      id: id.value,
+      userId: userId.value,
       password: password.value,
     };
     emit("login-user", user);

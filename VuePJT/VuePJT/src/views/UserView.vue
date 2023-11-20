@@ -16,19 +16,20 @@ const router = useRouter();
 const user = ref([]);
  
 const createUser = (user) => {
-  const API_URL = `http://localhost:8080/api/signup`;
+  console.log(user);
+  const API_URL = `http://localhost:8080/api/User/signup`;
   axios({
     url: API_URL,
     method: "POST",
     params: {
-      id: user.id,
+      userId: user.userId,
       password: user.password,
       name: user.name,
     },
   })
     .then(() => {
       alert("등록 완료");
-      router.push("/user");
+      router.push("/");
     })
     .catch((err) => {
       console.log(err);

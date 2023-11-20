@@ -10,6 +10,8 @@ import UserRegist from '@/components/user/UserRegist.vue'
 import ReviewDetail from '@/components/review/ReviewDetail.vue'
 import ReviewUpdate from '@/components/review/ReviewUpdate.vue'
 import ReviewCreate from '@/components/review/ReviewCreate.vue'
+import ReviewList from '@/components/review/ReviewList.vue'
+import ProductList from '@/components/product/ProductList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,12 +32,23 @@ const router = createRouter({
           component: VideoListItem
         },
       ]
-      
     },
     {
       path: "/:youtubeId",
       name: "videoDetail",
-      component: VideoDetail
+      component: VideoDetail,
+      children: [
+        {
+          path: 'product',
+          name: 'product',
+          component: ProductList
+        },
+        {
+          path: 'reviewlist',
+          name: 'reviewList',
+          component: ReviewList
+        },
+      ]
     },
     {
       path: '/review',
@@ -74,6 +87,7 @@ const router = createRouter({
         },
       ],
     },
+    
   ],
 });
 
