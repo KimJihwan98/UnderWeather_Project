@@ -7,10 +7,10 @@ const REST_VIDEO_API = `http://localhost:8080/api/Video`;
 
 export const useVideoStore = defineStore('video', () => {
   const videoList = ref([])
-  const getVideoList = function() {
+  const getVideoList = function(fitPartName) {
     axios.get(`${REST_VIDEO_API}/interest`)
       .then((response) => {
-        videoList.value = response.data
+        videoList.value = response.data.filter((v) => v.fitPartName === fitPartName.value);
       })
   }
 

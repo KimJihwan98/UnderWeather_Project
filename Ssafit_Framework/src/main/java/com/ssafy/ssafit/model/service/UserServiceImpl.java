@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User login(User user) {
-    	User tmp = userDao.select(user.getId());
+    	User tmp = userDao.select(user.getUserId());
 		//tmp가 실제 User 정보 일수도 있고 / null 넘어왔다.
 		if(tmp != null && tmp.getPassword().equals(user.getPassword()))
 			return tmp;
