@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <h4>리뷰 목록</h4>
-        <hr>
-        <ul>
-           
-        </ul>
-    </div>
+  <div>
+    <h4>리뷰 목록</h4>
+    <hr />
+    <ul></ul>
+  </div>
 </template>
 
 <script setup>
@@ -14,10 +12,8 @@ import { onMounted } from "vue";
 
 const store = useReviewStore();
 onMounted(() => {
-    store.getReviewList()
-})
+  store.getReviewList();
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
