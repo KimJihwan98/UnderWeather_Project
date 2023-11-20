@@ -43,6 +43,7 @@ public class UserRestController {
 	
 	@PostMapping("/User/signup")
 	public ResponseEntity<?> signup(User user) {
+		System.out.println(user);
 		int result = userService.signup(user);
 		
 		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);

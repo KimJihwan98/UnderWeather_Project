@@ -18,7 +18,8 @@ CREATE TABLE Sport (
 
 CREATE TABLE `User` (
   `userId` VARCHAR(20) PRIMARY KEY NOT NULL,
-  `pw` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  `name` varchar(40) NOT NULL,
   `preferSport` VARCHAR(50),
   `location` VARCHAR(50),
    FOREIGN KEY (`preferSport`) REFERENCES `Sport`(`spName`) 
@@ -67,13 +68,13 @@ VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵�
 INSERT INTO Sport(spName, spImg)
 VALUES ("축구", NULL);
 
-INSERT INTO User(userId,  pw, preferSport, location)
-VALUES ("cha", '1234', "축구", "청량리");
+INSERT INTO User(userId,  password, name, preferSport, location)
+VALUES ("cha", '1234', "아름", "축구", "청량리");
 
-INSERT INTO User(userId,  pw, preferSport, location)
-VALUES ("ssafy01", '1234', "축구", "청량리"),
-("ssafy02", '1234', "축구", "청량리"),
-("ssafy03", '1234', "축구", "청량리");
+INSERT INTO User(userId,  password,name, preferSport, location)
+VALUES ("ssafy01", '1234',"재현", "축구", "청량리"),
+("ssafy02", '1234', "병수","축구", "청량리"),
+("ssafy03", '1234', "농구","축구", "청량리");
 
 INSERT INTO Review(title,  youtubeId, userId, content, viewCnt)
 VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", 0),

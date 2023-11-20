@@ -50,7 +50,7 @@ const loginUser = (loginUser) => {
       let matchedUser = res.data.find(
         (u) => {
           console.log(u)
-          return u.id === loginUser.id && u.password === loginUser.password
+          return u.userId === loginUser.userId && u.password === loginUser.password
         }
       );
       console.log(matchedUser);
