@@ -4,7 +4,7 @@ USE wellnessdb;
 
 CREATE TABLE `Video` (
   `youtubeId` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `title` VARCHAR(50) NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
   `fitPartName` VARCHAR(20) NOT NULL,
   `channelName` VARCHAR(20) NOT NULL,
   `url` VARCHAR(100) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE `Video` (
 
 CREATE TABLE Sport (
   spName VARCHAR(50) PRIMARY KEY NOT NULL,
-  spImg LONGBLOB
+  spImg VARCHAR(200)
 );
 
 CREATE TABLE `User` (
@@ -41,7 +41,7 @@ CREATE TABLE `Grass` (
   `gId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `userId` VARCHAR(20) NOT NULL,
   `index` INT NOT NULL,
-  `img` LONGBLOB,
+  `img` VARCHAR(200),
   `title` VARCHAR(50) NOT NULL,
   `content` LONGTEXT,
   FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
@@ -64,6 +64,12 @@ VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵�
 ("u5OgcZdNbMo","저는 하체 식주의자 입니다", "하체","GYM종국", "https://www.youtube.com/embed/u5OgcZdNbMo", 0),
 ("PjGcOP-TQPE", "11자복근 복부 최고의 운동 [복근 핵매운맛]", "복부", "ThankyouBUBU", "https://www.youtube.com/embed/PjGcOP-TQPE", 0),
 ("7TLk7pscICk", "(Sub)누워서하는 5분 복부운동!! 효과보장! (매일 2주만 해보세요!)", "복부", "SomiFit", "https://www.youtube.com/embed/7TLk7pscICk", 0);
+
+
+INSERT INTO Video
+VALUES ("A5MzlPgNcJM", "[ENG] (근육통주의!!!!) 🔥올인원🔥 전신 근력운동 50분 홈트레이닝", "전신", "힙으뜸", "https://www.youtube.com/watch?v=A5MzlPgNcJM", 0),
+("cMkZ6A7wngk", "[ENG/ 전신 올인원 운동] 유튜브에서 다이어트 전신운동 찾았어요? 이제 딱 이거 하나만 해요!", "전신", "DanoTV", "https://www.youtube.com/watch?v=cMkZ6A7wngk", 0);
+
 
 INSERT INTO Sport(spName, spImg)
 VALUES ("축구", NULL);

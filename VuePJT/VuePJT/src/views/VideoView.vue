@@ -4,12 +4,21 @@
     <VideoList/>
   </div>
 
+  <br><hr><br>
+  <WeatherForecast/>
+
+  <br><hr><br>
+  <div>
+    <SportList />
+  </div>
+
+
 </template>
 
 <script setup>
 import VideoList from '@/components/video/VideoList.vue';
-
-
+import SportList from '@/components/sport/SportList.vue';
+import WeatherForecast from '@/components/weather/WeatherForecast.vue';
 
 </script>
 
