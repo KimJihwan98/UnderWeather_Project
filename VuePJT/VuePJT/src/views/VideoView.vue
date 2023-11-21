@@ -5,7 +5,9 @@
   </div>
 
   <br><hr><br>
-  <WeatherForecast/>
+    <div>
+      <WeatherForecast/>
+    </div>
 
   <br><hr><br>
   <div>

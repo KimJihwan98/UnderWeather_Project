@@ -26,13 +26,13 @@
 <script setup>
 import { ref } from 'vue';
 
-const modules = import.meta.glob("/src/assets/images/*.png", { eager: true });
+const modules = import.meta.glob("/public/assets/images/*.png", { eager: true });
 const sports = [];
 for (const img in modules) {
     sports.push(modules[img].default);
 }
 
-const currentPage = 0;
+let currentPage = 0;
 const itemsPerPage = 3;
 const nextPage = function () {
     currentPage = (currentPage + 1) % Math.ceil(sports.length / itemsPerPage);
