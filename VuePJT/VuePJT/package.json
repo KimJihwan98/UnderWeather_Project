@@ -13,6 +13,8 @@
     "bootstrap-icons": "^1.11.1",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
+    "vue-owl-carousel": "^2.0.3",
+    "vue-owl-carousel2": "^2.0.7",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

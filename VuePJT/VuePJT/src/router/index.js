@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 import VideoView from '@/views/VideoView.vue'
 import VideoList from '@/components/video/VideoList.vue'
@@ -16,23 +17,24 @@ import SportList from '@/components/sport/SportList.vue'
 import SportDetail from '@/components/sport/SportDetail.vue'
 import WeatherForecast from '@/components/weather/WeatherForecast.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'video',
+      path: "/",
+      name: "video",
       component: VideoView,
       children: [
         {
           path: "",
           name: "videoList",
-          component: VideoList
+          component: VideoList,
         },
         {
           path: "",
           name: "videoListItem",
-          component: VideoListItem
+          component: VideoListItem,
         },
         {
           path: "",
@@ -57,45 +59,45 @@ const router = createRouter({
       component: VideoDetail,
       children: [
         {
-          path: 'product',
-          name: 'product',
-          component: ProductList
+          path: "product",
+          name: "product",
+          component: ProductList,
         },
         {
-          path: 'reviewlist',
-          name: 'reviewList',
-          component: ReviewList
+          path: "reviewlist",
+          name: "reviewList",
+          component: ReviewList,
         },
-      ]
+      ],
     },
     {
-      path: '/review',
-      name: 'review',
-      component: ReviewView
+      path: "/review",
+      name: "review",
+      component: ReviewView,
     },
     {
-      path: '/review/:youtubeId/:rId',
-      name: 'reviewDetail',
-      component: ReviewDetail
+      path: "/review/:youtubeId/:rId",
+      name: "reviewDetail",
+      component: ReviewDetail,
     },
     {
-      path: '/review/:youtubeId/:rId/update',
-      name: 'reviewUpdate',
-      component: ReviewUpdate
+      path: "/review/:youtubeId/:rId/update",
+      name: "reviewUpdate",
+      component: ReviewUpdate,
     },
     {
-      path: '/review/:youtubeId/create',
-      name: 'reviewCreate',
-      component: ReviewCreate
+      path: "/review/:youtubeId/create",
+      name: "reviewCreate",
+      component: ReviewCreate,
     },
     {
-      path: '/login',
-      name: 'login',
-      component: LoginForm
+      path: "/login",
+      name: "login",
+      component: LoginForm,
     },
     {
       path: "/user",
-      name: 'user',
+      name: "user",
       component: UserView,
       children: [
         {
@@ -105,8 +107,7 @@ const router = createRouter({
         },
       ],
     },
-    
   ],
 });
 
-export default router
+export default router;

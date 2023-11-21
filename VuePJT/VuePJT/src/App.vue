@@ -1,19 +1,19 @@
-
 <template>
-    <HeaderNav :user="user" @logout="logout" />
-    <div class="routers-back">
-      <nav class="routers">
-        <RouterLink to="/">Video</RouterLink> |
-        <RouterLink to="/review">Review</RouterLink> |
-        <RouterLink to="/login">LoginPage</RouterLink>
-      </nav>
-    </div>
+  <HeaderNav :user="user" @logout="logout" />
+  <div class="routers-back">
+    <nav class="routers">
+      <RouterLink to="/">Video</RouterLink> |
+      <RouterLink to="/review">Review</RouterLink> |
+      <RouterLink to="/login">LoginPage</RouterLink> |
+      <RouterLink to="/login">LoginPage</RouterLink> |
+    </nav>
+  </div>
 
   <RouterView @login-user="loginUser" />
 </template>
 
 <script setup>
-import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import HeaderNav from "@/components/common/HeaderNav.vue";
 import axios from "axios";
@@ -41,16 +41,19 @@ const loginUser = (loginUser) => {
   const API_URL = `http://localhost:8080/api/User/list`;
 
 
+
   // axios 요청
   axios
     .get(API_URL)
     .then((res) => {
+
       console.log('userList', res);
       let matchedUser = res.data.find(
         (u) => {
           return u.userId === loginUser.userId && u.password === loginUser.password
         }
       );
+
 
       if (matchedUser) {
         user.value = matchedUser;
@@ -75,7 +78,7 @@ const loginUser = (loginUser) => {
 
 .routers {
   text-decoration: none;
-  text-align:center;
+  text-align: center;
   color: white;
 }
 
@@ -93,4 +96,5 @@ const loginUser = (loginUser) => {
 
 .container {
   margin: 0px 30px;
-}</style>
+}
+</style>
