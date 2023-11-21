@@ -40,7 +40,6 @@ const loginUser = (loginUser) => {
   // user 정보 요청 api 주소
   const API_URL = `http://localhost:8080/api/User/list`;
 
-  console.log('loginUser', loginUser);
 
   // axios 요청
   axios
@@ -49,11 +48,9 @@ const loginUser = (loginUser) => {
       console.log('userList', res);
       let matchedUser = res.data.find(
         (u) => {
-          console.log(u)
           return u.userId === loginUser.userId && u.password === loginUser.password
         }
       );
-      console.log(matchedUser);
 
       if (matchedUser) {
         user.value = matchedUser;
