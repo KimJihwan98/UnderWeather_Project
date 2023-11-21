@@ -22,10 +22,30 @@
                 </li>
             </ul>
         </div>
-        <ul>
-            <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
-        </ul>
+        <!-- Bootstrap Carousel -->
+        <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
+                    :class="{ active: index === 0 }">
+                    <div class="d-flex">
+                        <VideoListItem v-for="video in group" :key="video.youtubeId" :video="video" />
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
+    <!-- <ul>
+        <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
+    </ul> -->
+
 </template>
 
 <script setup>
@@ -38,16 +58,16 @@ const store = useVideoStore();
 const fitPartName = ref('전신');
 
 const check1 = computed(() => {
-    if(fitPartName === '전신') return {active: true}
+    if (fitPartName === '전신') return { active: true }
 })
 const check2 = computed(() => {
-    if(fitPartName === '상체') return {active: true}
+    if (fitPartName === '상체') return { active: true }
 })
 const check3 = computed(() => {
-    if(fitPartName === '하체') return {active: true}
+    if (fitPartName === '하체') return { active: true }
 })
 const check4 = computed(() => {
-    if(fitPartName === '복부') return {active: true}
+    if (fitPartName === '복부') return { active: true }
 })
 
 const changeFitPartName = (newName) => {
@@ -61,6 +81,14 @@ watch(fitPartName, () => {
 onMounted(() => {
     store.getVideoList(fitPartName)
 })
+
+const groupedVideos = computed(() => {
+    const groups = [];
+    for (let i = 0; i < store.videoList.length; i += 3) {
+        groups.push(store.videoList.slice(i, i + 3));
+    }
+    return groups;
+});
 
 </script>
 

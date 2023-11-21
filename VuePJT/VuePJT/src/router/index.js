@@ -12,6 +12,9 @@ import ReviewUpdate from '@/components/review/ReviewUpdate.vue'
 import ReviewCreate from '@/components/review/ReviewCreate.vue'
 import ReviewList from '@/components/review/ReviewList.vue'
 import ProductList from '@/components/product/ProductList.vue'
+import SportList from '@/components/sport/SportList.vue'
+import SportDetail from '@/components/sport/SportDetail.vue'
+import WeatherForecast from '@/components/weather/WeatherForecast.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +34,22 @@ const router = createRouter({
           name: "videoListItem",
           component: VideoListItem
         },
+        {
+          path: "",
+          name: "sportList",
+          component: SportList
+        },
+        {
+          path: "",
+          name: "weatherForecast",
+          component: WeatherForecast
+        },
       ]
+    },
+    {
+      path: "/:userId/:spname",
+      name: "sportDetail",
+      component: SportDetail
     },
     {
       path: "/:youtubeId",

@@ -1,6 +1,5 @@
 <template>
     <li @click="getVideo">
-        <div>{{ video.title }}</div>
         <img :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`">
         <hr><br>
     </li>
