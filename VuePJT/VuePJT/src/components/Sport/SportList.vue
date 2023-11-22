@@ -31,41 +31,15 @@
             </div>
         </div>
     </div>
-    <div class="button">
-        <button @click="prev" type="button" class="btn btn-outline-primary">
-            &lt
-        </button>
-        <button @click="next" type="button" class="btn btn-outline-primary">
-            &gt
-        </button>
-    </div>
-    <a
-      class="carousel-control-prev"
-      href="#imageCarousel"
-      role="button"
-      data-slide="prev"
-      @click="prevPage"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#imageCarousel"
-      role="button"
-      data-slide="next"
-      @click="nextPage"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+
+    
 </template>
 
 <script setup>
 
 import { ref, onMounted } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
+
 
 const wstore = useWeatherStore();
 onMounted(() => {
