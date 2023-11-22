@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h4>영상 목록</h4>
     <hr />
     <div class="container">
       <!-- <div class="text-center">

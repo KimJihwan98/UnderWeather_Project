@@ -1,24 +1,32 @@
 <template>
-  <HeaderNav :user="user" @logout="logout" />
-
-  <RouterView @login-user="loginUser" />
+  <div class="realmain" :style="{
+      'background-image': `url(/assets/bgImgs/${wstore.weatherName}.jpg)`,
+    }">
+    <HeaderNav :user="user" @logout="logout" />
+    <div class="section" >
+      <RouterView @login-user="loginUser" />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { RouterLink, RouterView, useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
 import HeaderNav from "@/components/common/HeaderNav.vue";
 import axios from "axios";
+import { useWeatherStore } from "@/stores/weather";
+import { ref, onMounted, watch } from "vue";
 
-const router = useRouter();
-const user = ref(null);
-
+const wstore = useWeatherStore();
 onMounted(() => {
+  wstore.getNowWeather();
   const savedUser = localStorage.getItem("loginUser");
   if (savedUser) {
     user.value = JSON.parse(savedUser);
   }
 });
+
+const router = useRouter();
+const user = ref(null);
 
 const logout = () => {
   user.value = null;
@@ -88,5 +96,9 @@ const loginUser = (loginUser) => {
 
 .container {
   margin: 0px 30px;
+}
+
+.section {
+  width: 80%;
 }
 </style>

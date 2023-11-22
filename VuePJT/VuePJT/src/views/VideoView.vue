@@ -1,29 +1,37 @@
 <template>
-  <div class="container">
-    <div class="videoList">
-      <h1> 영상 목록 </h1>
-      <VideoList />
+  <div class="main">
+    <div class="container">
+      <div class="videoList">
+        <h1>영상 목록</h1>
+        <VideoList />
+      </div>
+
+      <br />
+      <hr />
+      <br />
+      <div class="weather">
+        <WeatherForecast />
+      </div>
     </div>
 
-    <br>
-    <hr><br>
-    <div class="weather">
-      <WeatherForecast />
+    <br />
+    <hr />
+    <br />
+    <div>
+      <SportList />
     </div>
-  </div>
-
-
-  <br>
-  <hr><br>
-  <div>
-    <SportList />
   </div>
 </template>
 
 <script setup>
-import VideoList from '@/components/video/VideoList.vue';
-import SportList from '@/components/sport/SportList.vue';
-import WeatherForecast from '@/components/weather/WeatherForecast.vue';
+import VideoList from "@/components/video/VideoList.vue";
+import SportList from "@/components/sport/SportList.vue";
+import WeatherForecast from "@/components/weather/WeatherForecast.vue";
+import { useWeatherStore } from "@/stores/weather";
+import { ref, onMounted, watch } from "vue";
+
+
+
 
 </script>
 
@@ -31,12 +39,12 @@ import WeatherForecast from '@/components/weather/WeatherForecast.vue';
 .weather {
   position: fixed;
 
-
   right: 20px;
   top: 100px;
 }
 
 .container {
+
   display: flex;
 }
 </style>

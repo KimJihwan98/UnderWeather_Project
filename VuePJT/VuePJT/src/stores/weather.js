@@ -6,7 +6,8 @@ import axios from 'axios'
 const API_URL = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst`;
 
 export const useWeatherStore = defineStore('weather', () => {
-    const nowWeather = ref({tmp:'', sky:'', pty: '', pop:''})
+    const nowWeather = ref({ tmp: '', sky: '', pty: '', pop: '' })
+    const weatherName = ref('')
     const getNowWeather = function () {
         const today = new Date();
         let year = today.getFullYear();
@@ -16,7 +17,6 @@ export const useWeatherStore = defineStore('weather', () => {
         month = month < 10 ? "0" + month : month;
         day = day < 10 ? "0" + day : day;
         const todayStr = `${year}${month}${day}`;
-        console.log(todayStr);
         const times = ['0200', '0500', '0800', '1100', '1400', '1700', '2000', '2300']//8개넣어 
         let min = 10000;
         let min_idx = -1;
@@ -63,13 +63,37 @@ export const useWeatherStore = defineStore('weather', () => {
                                 break;
                         }
                     } else if (item.category === "PTY") {
-                        nowWeather.value.pty= item.fcstValue;
+                        nowWeather.value.pty = item.fcstValue;
                     } else if (item.category === "POP") {
                         nowWeather.value.pop = item.fcstValue;
                     }
                 });
+                // console.log('조건문 전', nowWeather.value);
+                // if (nowWeather.value.pty === 1 || nowWeather.value.pty === 4) {
+                //     weatherName.value = "rainy";
+                // } else if (nowWeather.value.pty === 2 || nowWeather.value.pty === 3) {
+                //     weatherName.value = "snow";
+                // } else if (nowWeather.value.pty === 2) {
+                //     if (nowWeather.value.sky === 1) {
+                //         weatherName.value = "sunny";
+                //     } else {
+                //         weatherName.value = "cloudy";
+                //     }
+                // }
+                if (nowWeather.pty === 1 || nowWeather.pty === 4) {
+                    weatherName.value = "rainy";
+                } else if (nowWeather.pty === 2 || nowWeather.pty === 3) {
+                    weatherName.value = "snow";
+                } else if (nowWeather.sky === "맑음") {
+                    weatherName.value = "sunny";
+                } else {
+                    weatherName.value = "cloudy";
+                }
+                console.log('비동기요청', weatherName.value)
             });
+
     }
 
-    return { nowWeather, getNowWeather }
+
+    return { nowWeather, weatherName, getNowWeather }
 })

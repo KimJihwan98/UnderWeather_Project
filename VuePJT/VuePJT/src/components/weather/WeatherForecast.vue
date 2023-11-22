@@ -1,10 +1,10 @@
 <template>
     <div class="weather1">
         <div class="card" style="width: 9rem;">
-            <img :src="`${imgSrc}`" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">오늘의 날씨</h5>
             </div>
+            <img :src="`${imgSrc}`" class="card-img-top" alt="...">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">기온 : {{ wstore.nowWeather.tmp }}℃</li>
                 <li class="list-group-item">날씨 : {{ wstore.nowWeather.sky }}</li>
@@ -27,8 +27,7 @@ onMounted(() => {
 
 let imgSrc = ref('');
 onBeforeUpdate(() => {
-    console.log(wstore.nowWeather.pty);
-    if (wstore.nowWeather.pty=== 1 || wstore.nowWeather.pty === 4) {
+    if (wstore.nowWeather.pty === 1 || wstore.nowWeather.pty === 4) {
         wstore.nowWeather.sky = "비"
         imgSrc = "/assets/weatherImgs/rainy.png";
     } else if (wstore.nowWeather.pty === 2 || wstore.nowWeather.pty === 3) {
@@ -39,10 +38,7 @@ onBeforeUpdate(() => {
     } else {
         imgSrc = "/assets/weatherImgs/cloudy.png";
     }
-    console.log(imgSrc);
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

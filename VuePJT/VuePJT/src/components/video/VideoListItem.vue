@@ -2,7 +2,7 @@
   <li @click="getVideo">
     <img
       class="image"
-      :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`"
+      :src="`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`"
     />
     <hr />
     <br />

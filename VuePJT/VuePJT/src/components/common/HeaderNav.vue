@@ -29,7 +29,7 @@ const logout = () => {
 <style>
 header {
   height: 70px;
-  background-color: rgb(18, 129, 233);
+  /* background-color: rgb(192, 197, 184); */
   line-height: 70px;
   padding: 0px 30px;
 }
