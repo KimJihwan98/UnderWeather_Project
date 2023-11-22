@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <h1> 영상 목록 </h1>
-    <VideoList/>
-  </div>
-
-  <br><hr><br>
-    <div>
-      <WeatherForecast/>
+  <div class="container">
+    <div class="videoList">
+      <h1> 영상 목록 </h1>
+      <VideoList />
     </div>
 
-  <br><hr><br>
+    <br>
+    <hr><br>
+    <div class="weather">
+      <WeatherForecast />
+    </div>
+  </div>
+
+
+  <br>
+  <hr><br>
   <div>
     <SportList />
   </div>
-
-
 </template>
 
 <script setup>
@@ -25,5 +28,15 @@ import WeatherForecast from '@/components/weather/WeatherForecast.vue';
 </script>
 
 <style scoped>
+.weather {
+  position: fixed;
 
+
+  right: 20px;
+  top: 100px;
+}
+
+.container {
+  display: flex;
+}
 </style>

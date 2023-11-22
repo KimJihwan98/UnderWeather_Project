@@ -2,7 +2,7 @@
   <header>
     <nav class="header-nav">
       <div>
-        <RouterLink to="/" class="logo">SSAFIT USERS</RouterLink>
+        <RouterLink to="/" class="logo">프로젝트 이름</RouterLink>
       </div>
       <div>
         <a href="#" v-if="getUser" @click="logout">로그아웃</a>

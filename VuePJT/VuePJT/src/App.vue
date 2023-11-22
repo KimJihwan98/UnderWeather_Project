@@ -1,13 +1,5 @@
 <template>
   <HeaderNav :user="user" @logout="logout" />
-  <div class="routers-back">
-    <nav class="routers">
-      <RouterLink to="/">Video</RouterLink> |
-      <RouterLink to="/review">Review</RouterLink> |
-      <RouterLink to="/login">LoginPage</RouterLink> |
-      <RouterLink to="/login">LoginPage</RouterLink> |
-    </nav>
-  </div>
 
   <RouterView @login-user="loginUser" />
 </template>
