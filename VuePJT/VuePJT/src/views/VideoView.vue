@@ -2,7 +2,6 @@
   <div class="main">
     <div class="container">
       <div class="videoList">
-        <h1>영상 목록</h1>
         <VideoList />
       </div>
 
@@ -29,22 +28,17 @@ import SportList from "@/components/sport/SportList.vue";
 import WeatherForecast from "@/components/weather/WeatherForecast.vue";
 import { useWeatherStore } from "@/stores/weather";
 import { ref, onMounted, watch } from "vue";
-
-
-
-
 </script>
 
 <style scoped>
 .weather {
   position: fixed;
-
+  margin: auto;
   right: 20px;
   top: 100px;
 }
 
 .container {
-
   display: flex;
 }
 </style>

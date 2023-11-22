@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <hr />
-    <div class="container">
-      <!-- <div class="text-center">
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="container">
+    <!-- <div class="text-center">
               <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
           </div> -->
-      <ul class="nav nav-tabs">
-        <!-- <p>{{ fitPartName }}</p> -->
-        <li class="nav-item" @click="changeFitPartName(`전신`)">
-          <a class="nav-link" :class="check1" aria-current="page" href="#"
-            >전신</a
-          >
-        </li>
-        <li class="nav-item" @click="changeFitPartName(`상체`)">
-          <a class="nav-link" :class="check2" href="#">상체</a>
-        </li>
-        <li class="nav-item" @click="changeFitPartName(`하체`)">
-          <a class="nav-link" :class="check3" href="#">하체</a>
-        </li>
-        <li class="nav-item" @click="changeFitPartName(`복부`)">
-          <a class="nav-link" :class="check4" href="#">복부</a>
-        </li>
-      </ul>
-    </div>
+    <ul class="nav nav-tabs">
+      <!-- <p>{{ fitPartName }}</p> -->
+      <li class="nav-item" @click="changeFitPartName(`전신`)">
+        <a class="nav-link" :class="check1" aria-current="page" href="#"
+          >전신</a
+        >
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`상체`)">
+        <a class="nav-link" :class="check2" href="#">상체</a>
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`하체`)">
+        <a class="nav-link" :class="check3" href="#">하체</a>
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`복부`)">
+        <a class="nav-link" :class="check4" href="#">복부</a>
+      </li>
+    </ul>
+
     <!-- Bootstrap Carousel -->
     <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -41,36 +45,15 @@
           </div>
         </div>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#videoCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#videoCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
   </div>
+
   <!-- <ul>
       <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
   </ul> -->
-  <div class="button">
-    <button class="btn btn-primary btn-sm" @click="prev" type="button">
-      prev
-    </button>
-    <button class="btn btn-primary btn-sm" @click="next" type="button">
-      next
-    </button>
+  <div class="button1">
+    <button type="button" class="btn btn-link" @click="prev">◀</button>
+    <button type="button" class="btn btn-link" @click="next">▶</button>
   </div>
 </template>
 
@@ -128,8 +111,19 @@ const groupedVideos = computed(() => {
 </script>
 
 <style scoped>
-.button {
+.button1 {
   display: flex;
   justify-content: center;
+}
+.btn-link {
+  background-color: white;
+  border-color: rgb(15, 129, 236);
+  color: rgb(15, 129, 236);
+}
+.container {
+  margin: auto;
+}
+.vili {
+  margin: auto;
 }
 </style>
