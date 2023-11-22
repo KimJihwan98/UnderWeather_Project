@@ -3,6 +3,7 @@
     <nav class="header-nav">
       <div>
         <RouterLink to="/" class="logo"><br />UnderWeather</RouterLink>
+
       </div>
       <!-- <div>
         <a href="#" v-if="getUser" @click="logout" class="logout">로그아웃</a>

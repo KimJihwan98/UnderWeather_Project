@@ -26,11 +26,13 @@
 import VideoList from "@/components/video/VideoList.vue";
 import SportList from "@/components/sport/SportList.vue";
 import WeatherForecast from "@/components/weather/WeatherForecast.vue";
-import { useWeatherStore } from "@/stores/weather";
-import { ref, onMounted, watch } from "vue";
+
 </script>
 
 <style scoped>
+
+
+
 .weather {
   position: fixed;
   margin: auto;
@@ -40,5 +42,6 @@ import { ref, onMounted, watch } from "vue";
 
 .container {
   display: flex;
+  justify-content: center;
 }
 </style>

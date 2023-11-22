@@ -102,6 +102,7 @@ const loginUser = (loginUser) => {
 .realmain {
   background-size: cover;
 }
+
 .container {
   margin: 0px 30px;
 }

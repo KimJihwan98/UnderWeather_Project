@@ -1,4 +1,5 @@
 <template>
+
   <br />
   <br />
   <br />
@@ -28,13 +29,13 @@
     </ul>
 
     <!-- Bootstrap Carousel -->
-    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div
           class="carousel-item"
           v-for="(group, index) in groupedVideos"
           :key="index"
-          :class="{ active: index === 0 }"
+          :class="{ active: index === current }"
         >
           <div class="d-flex">
             <VideoListItem
@@ -48,12 +49,14 @@
     </div>
   </div>
 
+
   <!-- <ul>
       <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
   </ul> -->
   <div class="button1">
     <button type="button" class="btn btn-link" @click="prev">◀</button>
     <button type="button" class="btn btn-link" @click="next">▶</button>
+
   </div>
 </template>
 
@@ -85,6 +88,7 @@ const changeFitPartName = (newName) => {
 
 watch(fitPartName, () => {
   store.getVideoList(fitPartName);
+  current.value=0;
 });
 
 onMounted(() => {
@@ -95,10 +99,10 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoList.length - 1)) % store.videoList.length;
+    (current.value + (store.videoList.length - 1)) % (Math.floor(store.videoList.length/3)+1);
 };
 const next = function () {
-  current.value = (current.value + 1) % store.videoList.length;
+  current.value = (current.value + 1) % (Math.floor(store.videoList.length/3)+1);
 };
 
 const groupedVideos = computed(() => {
@@ -115,15 +119,23 @@ const groupedVideos = computed(() => {
   display: flex;
   justify-content: center;
 }
+
 .btn-link {
   background-color: white;
   border-color: rgb(15, 129, 236);
   color: rgb(15, 129, 236);
 }
 .container {
-  margin: auto;
+  display:flex;
+  justify-content:center;
 }
 .vili {
   margin: auto;
+
+
+.container {
+  display:flex;
+  justify-content:center;
+
 }
 </style>
