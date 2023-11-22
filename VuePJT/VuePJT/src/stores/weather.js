@@ -8,6 +8,7 @@ const API_URL = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVil
 export const useWeatherStore = defineStore('weather', () => {
     const nowWeather = ref({ tmp: '', sky: '', pty: '', pop: '' })
     const weatherName = ref('')
+    const status = ref('');
     const getNowWeather = function () {
         const today = new Date();
         let year = today.getFullYear();
@@ -89,11 +90,17 @@ export const useWeatherStore = defineStore('weather', () => {
                 } else {
                     weatherName.value = "cloudy";
                 }
+
+                if(nowWeather.pty === 1 || nowWeather.pty === 4 || nowWeather.pty === 2 || nowWeather.pty === 3){
+                    status.value = 'inside';
+                } else {
+                    status.value = 'outside';
+                }
                 console.log('비동기요청', weatherName.value)
             });
 
     }
 
 
-    return { nowWeather, weatherName, getNowWeather }
+    return { nowWeather, weatherName, getNowWeather, status }
 })

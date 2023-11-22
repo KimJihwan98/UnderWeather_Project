@@ -2,17 +2,14 @@
   <div>
     <hr />
     <div class="container">
-      <!-- <div class="text-center">
-              <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
-          </div> -->
       <ul class="nav nav-tabs">
         <!-- <p>{{ fitPartName }}</p> -->
         <li class="nav-item" @click="changeFitPartName(`전신`)">
-          <a class="nav-link" :class="check1" aria-current="page" href="#"
+          <a class="nav-link"  :class="check1" aria-current="page" href="#"
             >전신</a
           >
         </li>
-        <li class="nav-item" @click="changeFitPartName(`상체`)">
+        <li class="nav-item"  @click="changeFitPartName(`상체`)">
           <a class="nav-link" :class="check2" href="#">상체</a>
         </li>
         <li class="nav-item" @click="changeFitPartName(`하체`)">
@@ -24,13 +21,13 @@
       </ul>
     </div>
     <!-- Bootstrap Carousel -->
-    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div
           class="carousel-item"
           v-for="(group, index) in groupedVideos"
           :key="index"
-          :class="{ active: index === 0 }"
+          :class="{ active: index === current }"
         >
           <div class="d-flex">
             <VideoListItem
@@ -41,35 +38,14 @@
           </div>
         </div>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#videoCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#videoCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
   </div>
-  <!-- <ul>
-      <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
-  </ul> -->
   <div class="button">
-    <button class="btn btn-primary btn-sm" @click="prev" type="button">
-      prev
+    <button @click="prev" type="button"  class="btn btn-outline-primary">
+       &lt 
     </button>
-    <button class="btn btn-primary btn-sm" @click="next" type="button">
-      next
+    <button @click="next" type="button" class="btn btn-outline-primary">
+       &gt 
     </button>
   </div>
 </template>
@@ -102,6 +78,7 @@ const changeFitPartName = (newName) => {
 
 watch(fitPartName, () => {
   store.getVideoList(fitPartName);
+  current.value=0;
 });
 
 onMounted(() => {
@@ -112,10 +89,10 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoList.length - 1)) % store.videoList.length;
+    (current.value + (store.videoList.length - 1)) % (Math.floor(store.videoList.length/3)+1);
 };
 const next = function () {
-  current.value = (current.value + 1) % store.videoList.length;
+  current.value = (current.value + 1) % (Math.floor(store.videoList.length/3)+1);
 };
 
 const groupedVideos = computed(() => {
@@ -131,5 +108,10 @@ const groupedVideos = computed(() => {
 .button {
   display: flex;
   justify-content: center;
+}
+
+.container {
+  display:flex;
+  justify-content:center;
 }
 </style>

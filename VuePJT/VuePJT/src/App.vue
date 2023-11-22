@@ -93,7 +93,9 @@ const loginUser = (loginUser) => {
 .text-center {
   text-align: center;
 }
-
+/* .realmain{
+  background-size:cover;
+} */
 .container {
   margin: 0px 30px;
 }
