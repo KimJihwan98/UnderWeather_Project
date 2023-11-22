@@ -27,9 +27,6 @@ import VideoList from "@/components/video/VideoList.vue";
 import SportList from "@/components/sport/SportList.vue";
 import WeatherForecast from "@/components/weather/WeatherForecast.vue";
 
-
-
-
 </script>
 
 <style scoped>
@@ -38,7 +35,7 @@ import WeatherForecast from "@/components/weather/WeatherForecast.vue";
 
 .weather {
   position: fixed;
-
+  margin: auto;
   right: 20px;
   top: 100px;
 }

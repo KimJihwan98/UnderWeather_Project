@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.ProductDao">
+    <insert id="registProduct" parameterType="Product">
+		insert into review (youtubeId, price, pUrl, userId)
+		values (#{youtubeId}, #{price}, #{pUrl}, #{userId})
+    </insert>
+    
+    <select id="productList" parameterType="string" resultType="Product">
+    	select * from product where youtubeId=#{youtubeId}            
+    </select>
+
+    
+   <delete id="deleteProduct" parameterType="int">
+    	delete from product where pId = #{pId}
+    </delete>
+     
+
+</mapper>

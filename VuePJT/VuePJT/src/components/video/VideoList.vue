@@ -1,25 +1,33 @@
 <template>
-  <div>
-    <hr />
-    <div class="container">
-      <ul class="nav nav-tabs">
-        <!-- <p>{{ fitPartName }}</p> -->
-        <li class="nav-item" @click="changeFitPartName(`전신`)">
-          <a class="nav-link"  :class="check1" aria-current="page" href="#"
-            >전신</a
-          >
-        </li>
-        <li class="nav-item"  @click="changeFitPartName(`상체`)">
-          <a class="nav-link" :class="check2" href="#">상체</a>
-        </li>
-        <li class="nav-item" @click="changeFitPartName(`하체`)">
-          <a class="nav-link" :class="check3" href="#">하체</a>
-        </li>
-        <li class="nav-item" @click="changeFitPartName(`복부`)">
-          <a class="nav-link" :class="check4" href="#">복부</a>
-        </li>
-      </ul>
-    </div>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="container">
+    <!-- <div class="text-center">
+              <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
+          </div> -->
+    <ul class="nav nav-tabs">
+      <!-- <p>{{ fitPartName }}</p> -->
+      <li class="nav-item" @click="changeFitPartName(`전신`)">
+        <a class="nav-link" :class="check1" aria-current="page" href="#"
+          >전신</a
+        >
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`상체`)">
+        <a class="nav-link" :class="check2" href="#">상체</a>
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`하체`)">
+        <a class="nav-link" :class="check3" href="#">하체</a>
+      </li>
+      <li class="nav-item" @click="changeFitPartName(`복부`)">
+        <a class="nav-link" :class="check4" href="#">복부</a>
+      </li>
+    </ul>
+
     <!-- Bootstrap Carousel -->
     <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -40,13 +48,15 @@
       </div>
     </div>
   </div>
-  <div class="button">
-    <button @click="prev" type="button"  class="btn btn-outline-primary">
-       &lt 
-    </button>
-    <button @click="next" type="button" class="btn btn-outline-primary">
-       &gt 
-    </button>
+
+
+  <!-- <ul>
+      <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
+  </ul> -->
+  <div class="button1">
+    <button type="button" class="btn btn-link" @click="prev">◀</button>
+    <button type="button" class="btn btn-link" @click="next">▶</button>
+
   </div>
 </template>
 
@@ -105,13 +115,27 @@ const groupedVideos = computed(() => {
 </script>
 
 <style scoped>
-.button {
+.button1 {
   display: flex;
   justify-content: center;
 }
 
+.btn-link {
+  background-color: white;
+  border-color: rgb(15, 129, 236);
+  color: rgb(15, 129, 236);
+}
 .container {
   display:flex;
   justify-content:center;
+}
+.vili {
+  margin: auto;
+
+
+.container {
+  display:flex;
+  justify-content:center;
+
 }
 </style>
