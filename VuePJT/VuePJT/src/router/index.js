@@ -16,7 +16,7 @@ import ProductList from '@/components/product/ProductList.vue'
 import SportList from '@/components/sport/SportList.vue'
 import SportDetail from '@/components/sport/SportDetail.vue'
 import WeatherForecast from '@/components/weather/WeatherForecast.vue'
-
+import SportListItem from '@/components/sport/SportListItem.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,6 +47,11 @@ const router = createRouter({
           component: WeatherForecast
         },
       ]
+    },
+    {
+      path: "/sportList/:spname",
+      name: "sportListItem",
+      component: SportListItem
     },
     {
       path: "/:userId/:spname",
