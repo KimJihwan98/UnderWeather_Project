@@ -35,16 +35,20 @@ CREATE TABLE `Review` (
 CREATE TABLE `Singer` (
   `sId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `sName` VARCHAR(50) NOT NULL,
-  `genre` VARCHAR(50) NOT NULL
+  `genre` VARCHAR(50) NOT NULL,
+  `youtubeId` VARCHAR(50) NOT NULL,
+  FOREIGN KEY (`youtubeId`) REFERENCES `Video`(`youtubeId`)
 );
 
 INSERT INTO Video
+
 VALUES ("xkdLZABmt7Hpp7Lj", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 따사로운 봄을 기다리며 spring pop 🌱🌼", "때껄룩TAKE A LOOK", "https://youtu.be/DpcJP-wQWGI?si=xkdLZABmt7Hpp7Lj", 'pop', '', 0),
 ("YvAjEojtUj1Qzqol", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 이 노래 10000번은 넘게 들은 듯.. 믿고 들어도 되는 주인장 최애 팝송🤍", "mycozypop", "https://youtu.be/nE7md7M6j8w?si=YvAjEojtUj1Qzqol", 'pop', '', 0),
 ("800gMULqiZeRdUQD", "추워질 때 들으려고 아껴둔 가을 팝송 대방출 𝐩𝐥𝐚𝐲𝐥𝐢𝐬𝐭 🍂", "송디 DJSOHEE", "https://youtu.be/FT4vQyGp8eo?si=ㅊㅊ", 'pop', '', 0),
 ("q_6pmIeTp0yB0Tuh", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 2022년을 돌아보며 인기팝송 총모음ㅣBest Popular Songs Of 2022˚₊‧", "때껄룩TAKE A LOOK", "https://youtu.be/FtK_N-r05q4?si=q_6pmIeTp0yB0Tuh", 'pop', '', 0),
 ("J8-ZetnWwjuZ1JdQ", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 이보다 좋은 팝송 히트곡은 없다 2020~2023년을 빛낸 팝송들💫 [60곡]", "mycozypop", "https://youtu.be/hAGTFX9ipdI?si=J8-ZetnWwjuZ1JdQ", 'pop', '', 0),
 ("L6UILVUtL5SpjKua", "[Playlist] 가을 노을빛으로 물들어가는 밤 | 감성 팝과 함께 하는 재충전의 시간 with 해비치 | relaxing pop music", "essential;", "https://youtu.be/cqf0Ni3Jo_I?si=L6UILVUtL5SpjKua", 'pop', '', 0),
+
 
 ("bGqZoPztUYfFfEk8", "[KPOP Playlist] 요즘 듣는 케이팝 노동요 ➅", "김로라", "https://youtu.be/T31rLZSJdF8?si=bGqZoPztUYfFfEk8", 'kPop', '', 0),
 ("zDUPRS6u1_uxlSS5", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 내가 요즘 듣는 케이팝 최신곡 플리 🎧", "구구 Playlist", "https://youtu.be/NPqGJWqB6ws?si=zDUPRS6u1_uxlSS5", 'kPop', '', 0),

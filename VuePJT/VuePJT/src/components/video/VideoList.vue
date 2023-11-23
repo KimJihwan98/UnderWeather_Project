@@ -10,18 +10,24 @@
               <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
           </div> -->
     <ul class="nav nav-tabs">
-      <!-- <p>{{ fitPartName }}</p> -->
-      <li class="nav-item" @click="changeFitPartName(`전신`)">
-        <a class="nav-link" :class="check1" aria-current="page" href="#">전신</a>
+      <!-- <p>{{ genre }}</p> -->
+      <li class="nav-item" @click="changeGenreName(`pop`)">
+        <a class="nav-link" :class="check1" aria-current="page" href="#">POP</a>
       </li>
-      <li class="nav-item" @click="changeFitPartName(`상체`)">
-        <a class="nav-link" :class="check2" href="#">상체</a>
+      <li class="nav-item" @click="changeGenreName(`kPop`)">
+        <a class="nav-link" :class="check2" href="#">K-POP</a>
       </li>
-      <li class="nav-item" @click="changeFitPartName(`하체`)">
-        <a class="nav-link" :class="check3" href="#">하체</a>
+      <li class="nav-item" @click="changeGenreName(`ballad`)">
+        <a class="nav-link" :class="check3" href="#">발라드</a>
       </li>
-      <li class="nav-item" @click="changeFitPartName(`복부`)">
-        <a class="nav-link" :class="check4" href="#">복부</a>
+      <li class="nav-item" @click="changeGenreName(`hipHop`)">
+        <a class="nav-link" :class="check4" href="#">힙합</a>
+      </li>
+      <li class="nav-item" @click="changeGenreName(`classic`)">
+        <a class="nav-link" :class="check5" href="#">클래식</a>
+      </li>
+      <li class="nav-item" @click="changeGenreName(`rock`)">
+        <a class="nav-link" :class="check6" href="#">락</a>
       </li>
     </ul>
 
@@ -57,48 +63,55 @@ import { onMounted, ref, watch, computed } from "vue";
 
 const store = useVideoStore();
 
-const fitPartName = ref("전신");
+const genre = ref("pop");
 
 const check1 = computed(() => {
-  if (fitPartName === "전신") return { active: true };
+  if (genre === "pop") return { active: true };
 });
 const check2 = computed(() => {
-  if (fitPartName === "상체") return { active: true };
+  if (genre === "kPop") return { active: true };
 });
 const check3 = computed(() => {
-  if (fitPartName === "하체") return { active: true };
+  if (genre === "ballad") return { active: true };
 });
 const check4 = computed(() => {
-  if (fitPartName === "복부") return { active: true };
+  if (genre === "hipHop") return { active: true };
+});
+const check5 = computed(() => {
+  if (genre === "classic") return { active: true };
+});
+const check6 = computed(() => {
+  if (genre === "rock") return { active: true };
 });
 
-const changeFitPartName = (newName) => {
-  fitPartName.value = newName;
+
+const changeGenreName = (newGenre) => {
+  genre.value = newGenre;
 };
 
-watch(fitPartName, () => {
-  store.getVideoList(fitPartName);
+watch(genre, () => {
+  store.getVideoListGenre(genre);
   current.value = 0;
 });
 
 onMounted(() => {
-  store.getVideoList(fitPartName);
+  store.getVideoListGenre(genre);
 });
 
 const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoList.length - 1)) % (Math.floor(store.videoList.length / 3) + 1);
+    (current.value + (store.videoListGenre.length - 1)) % (Math.floor(store.videoListGenre.length / 3) + 1);
 };
 const next = function () {
-  current.value = (current.value + 1) % (Math.floor(store.videoList.length / 3) + 1);
+  current.value = (current.value + 1) % (Math.floor(store.videoListGenre.length / 3) + 1);
 };
 
 const groupedVideos = computed(() => {
   const groups = [];
-  for (let i = 0; i < store.videoList.length; i += 3) {
-    groups.push(store.videoList.slice(i, i + 3));
+  for (let i = 0; i < store.videoListGenre.length; i += 3) {
+    groups.push(store.videoListGenre.slice(i, i + 3));
   }
   return groups;
 });

@@ -25,7 +25,7 @@
       ></iframe>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">부위 : {{ vstore.video.fitPartName }}</li>
+        <li class="list-group-item">장르 : {{ vstore.video.genre }}</li>
         <li class="list-group-item">
           채널 이름 : {{ vstore.video.channelName }}
         </li>
@@ -53,7 +53,7 @@
       </li>
       <li class="nav-item">
         <RouterLink class="nav-link" :class="products" :to="{ name: 'product' }"
-          >관련 제품 목록</RouterLink
+          >Singer in this Playlist</RouterLink
         >
       </li>
     </ul>
