@@ -13,10 +13,10 @@ import ReviewUpdate from '@/components/review/ReviewUpdate.vue'
 import ReviewCreate from '@/components/review/ReviewCreate.vue'
 import ReviewList from '@/components/review/ReviewList.vue'
 import ProductList from '@/components/product/ProductList.vue'
-import SportList from '@/components/sport/SportList.vue'
-import SportDetail from '@/components/sport/SportDetail.vue'
+import SportList from '@/components/Sport/SportList.vue'
+import SportDetail from '@/components/Sport/SportDetail.vue'
 import WeatherForecast from '@/components/weather/WeatherForecast.vue'
-import SportListItem from '@/components/sport/SportListItem.vue'
+import SportListItem from '@/components/Sport/SportListItem.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,7 +39,14 @@ const router = createRouter({
         {
           path: "",
           name: "sportList",
-          component: SportList
+          component: SportList,
+          children: [
+            {
+              path: "/sportListItem",
+              name: "sportListItem",
+              component: SportListItem
+            },
+          ]
         },
         {
           path: "",
@@ -48,11 +55,7 @@ const router = createRouter({
         },
       ]
     },
-    {
-      path: "/sportList/:spname",
-      name: "sportListItem",
-      component: SportListItem
-    },
+    
     {
       path: "/:userId/:spname",
       name: "sportDetail",
