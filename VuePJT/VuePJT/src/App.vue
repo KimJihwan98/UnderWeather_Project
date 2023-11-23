@@ -1,10 +1,13 @@
 <template>
-    <div class="realmain" :style="{'background-image': `url(/assets/bgImgs/sunny.jpg)`,}">
-      <HeaderNav :user="user" @logout="logout" />
-      <div class="section">
-        <RouterView @login-user="loginUser" />
-      </div>
+  <div
+    class="realmain"
+    :style="{ 'background-image': `url(/assets/bgImgs/sunny.jpg)` }"
+  >
+    <HeaderNav :user="user" @logout="logout" />
+    <div class="section">
+      <RouterView @login-user="loginUser" />
     </div>
+  </div>
 </template>
 
 <script setup>
@@ -68,7 +71,8 @@ const loginUser = (loginUser) => {
 <style scoped>
 @font-face {
   font-family: "BookkMyungjo-Bd";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
 }

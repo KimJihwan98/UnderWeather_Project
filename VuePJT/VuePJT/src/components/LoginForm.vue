@@ -1,10 +1,22 @@
 <template>
   <div class="login-container">
     <fieldset class="text-center">
-    <h3>로그인</h3>
-      <input type="text" id="id" v-model="userId" class="input-field" placeholder="아이디"/><br />
+      <h3>로그인</h3>
+      <input
+        type="text"
+        id="id"
+        v-model="userId"
+        class="input-field"
+        placeholder="아이디"
+      /><br />
 
-      <input type="password" id="password" v-model="password" class="input-field" placeholder="비밀번호"/><br />
+      <input
+        type="password"
+        id="password"
+        v-model="password"
+        class="input-field"
+        placeholder="비밀번호"
+      /><br />
       <button class="login-btn" @click="login">로그인</button>
     </fieldset>
   </div>
@@ -67,14 +79,12 @@ label {
 .login-btn:hover {
   background-color: #0056b3;
 }
-.text-center{
+.text-center {
   /* align-items: center;
   justify-content: center; */
   margin-left: 250px;
-
 }
-h3{
-color: white;
+h3 {
+  color: white;
 }
-
 </style>

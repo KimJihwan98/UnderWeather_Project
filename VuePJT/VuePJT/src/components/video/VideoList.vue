@@ -12,7 +12,9 @@
           </div> -->
       <ul class="nav nav-tabs">
         <li class="nav-item" @click="changeGenreName(`pop`)">
-          <a class="nav-link" :class="check1" aria-current="page" href="#">POP</a>
+          <a class="nav-link" :class="check1" aria-current="page" href="#"
+            >POP</a
+          >
         </li>
         <li class="nav-item" @click="changeGenreName(`kPop`)">
           <a class="nav-link" :class="check2" href="#">K-POP</a>
@@ -30,15 +32,26 @@
           <a class="nav-link" :class="check6" href="#">락</a>
         </li>
       </ul>
-
     </div>
     <!-- Bootstrap Carousel -->
-    <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div
+      id="videoCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
       <div class="carousel-inner">
-        <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
-          :class="{ active: index === current }">
+        <div
+          class="carousel-item"
+          v-for="(group, index) in groupedVideos"
+          :key="index"
+          :class="{ active: index === current }"
+        >
           <div class="d-flex">
-            <VideoListItem v-for="video in group" :key="video.youtubeId" :video="video" />
+            <VideoListItem
+              v-for="video in group"
+              :key="video.youtubeId"
+              :video="video"
+            />
           </div>
         </div>
       </div>
@@ -46,7 +59,6 @@
     <div class="button1">
       <button type="button" class="btn btn-link" @click="prev">◀</button>
       <button type="button" class="btn btn-link" @click="next">▶</button>
-
     </div>
   </div>
 </template>
@@ -79,7 +91,6 @@ const check6 = computed(() => {
   if (genre.value === "rock") return { active: true };
 });
 
-
 const changeGenreName = (newGenre) => {
   genre.value = newGenre;
 };
@@ -98,10 +109,12 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoListGenre.length - 1)) % (Math.ceil(store.videoListGenre.length / 3));
+    (current.value + (store.videoListGenre.length - 1)) %
+    Math.ceil(store.videoListGenre.length / 3);
 };
 const next = function () {
-  current.value = (current.value + 1) % (Math.ceil(store.videoListGenre.length / 3));
+  current.value =
+    (current.value + 1) % Math.ceil(store.videoListGenre.length / 3);
 };
 
 const groupedVideos = computed(() => {
@@ -130,7 +143,6 @@ const groupedVideos = computed(() => {
   justify-content: center;
 }
 
-
 button {
   padding: 5px;
   width: 40px;
@@ -139,6 +151,4 @@ button {
 .vili {
   margin: auto;
 }
-
-
 </style>

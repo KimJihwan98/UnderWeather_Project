@@ -6,43 +6,44 @@
   <br />
   <br /> -->
 
-  <div class="tit1"> 
+  <div class="tit1">
     <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
   </div>
-    <div class="container1">
-  <div class="box">
+  <div class="container1">
+    <div class="box">
+      <div class="card" style="width: 45rem">
+        <iframe
+          class="card-img-top"
+          width="480"
+          height="400"
+          :src="videoURL"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
 
-    <div class="card" style="width:45rem">
-      <iframe
-        class="card-img-top"
-        width="480"
-        height="400"
-        :src="videoURL"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" v-if=(vstore.video.genre)>장르 : {{ vstore.video.genre }}</li>
-        <li class="list-group-item" v-if=(vstore.video.weather)>듣기 좋은 날 : {{ vstore.video.weather }}</li>
-        <li class="list-group-item">
-          채널 이름 : {{ vstore.video.channelName }}
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <hr />
-  <div class="weather">
-        <WeatherForecast />
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" v-if="vstore.video.genre">
+            장르 : {{ vstore.video.genre }}
+          </li>
+          <li class="list-group-item" v-if="vstore.video.weather">
+            듣기 좋은 날 : {{ vstore.video.weather }}
+          </li>
+          <li class="list-group-item">
+            채널 이름 : {{ vstore.video.channelName }}
+          </li>
+        </ul>
       </div>
     </div>
-  <div class="container">
-    <div class="text-center">
-      
+
+    <hr />
+    <div class="weather">
+      <WeatherForecast />
     </div>
+  </div>
+  <div class="container">
+    <div class="text-center"></div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <RouterLink
@@ -60,10 +61,6 @@
     </ul>
     <RouterView />
   </div>
-
-
-
-
 </template>
 
 <script setup>
@@ -106,15 +103,14 @@ const products = computed(() => {
 </script>
 
 <style scoped>
-
-.card-text{
+.card-text {
   text-align: center;
 }
-h4{
+h4 {
   color: white;
   display: flex;
 }
-.tit1{
+.tit1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,14 +120,14 @@ h4{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin:auto;
+  margin: auto;
 }
 
 .card-img-top {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.container1{
+.container1 {
   display: flex;
 }
 </style>
