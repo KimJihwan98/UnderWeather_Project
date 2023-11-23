@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>제품 목록</h2>
+        <h2>가수 목록</h2>
     </div>
 </template>
 

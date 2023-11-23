@@ -35,11 +35,13 @@ CREATE TABLE `Review` (
 CREATE TABLE `Singer` (
   `sId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `sName` VARCHAR(50) NOT NULL,
-  `genre` VARCHAR(50) NOT NULL
+  `genre` VARCHAR(50) NOT NULL,
+  `youtubeId` VARCHAR(50) NOT NULL,
+  FOREIGN KEY (`youtubeId`) REFERENCES `Video`(`youtubeId`)
 );
 
 INSERT INTO Video
-VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "ThankyouBUBU", "https://www.youtube.com/embed/gMaB-fG4u4g", '장르', '날씨', 0)
+VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "ThankyouBUBU", "https://www.youtube.com/embed/gMaB-fG4u4g", '장르', '날씨', 0);
 
 
 

@@ -6,17 +6,26 @@ import router from '@/router'
 const REST_VIDEO_API = `http://localhost:8080/api/Video`;
 
 export const useVideoStore = defineStore('video', () => {
-  const videoList = ref([])
-  const getVideoList = function(fitPartName) {
-    axios.get(`${REST_VIDEO_API}/interest`)
+  const videoListGenre = ref([])
+  const getVideoListGenre = function(genre) {
+    axios.get(`${REST_VIDEO_API}/genre`)
       .then((response) => {
-        videoList.value = response.data.filter((v) => v.fitPartName === fitPartName.value);
+        console.log(response.data);
+        videoListGenre.value = response.data;
+      })
+  }
+
+  const videoListWeather = ref([])
+  const getVideoListWeather = function(weather) {
+    axios.get(`${REST_VIDEO_API}/read`)
+      .then((response) => {
+        videoListWeather.value = response.data.filter((v) => v.weather === weather.value);
       })
   }
 
   const video = ref({})
   const getVideo = function(youtubeId) {
-    axios.get(`${REST_VIDEO_API}/interest`)
+    axios.get(`${REST_VIDEO_API}/read`)
       .then((res) => {
         let matchedVideo = res.data.find(
           (v) => {
@@ -30,16 +39,8 @@ export const useVideoStore = defineStore('video', () => {
       })
   };
 
-  // const video = ref({})
-  // const getVideo = function (youtubeId) {
-  //   axios.get(`${REST_VIDEO_API}/${youtubeId}`)
-  //     .then((response) => {
-  //     video.value = response.data
-  //   })
-  // }
-
   
 
 
-  return { videoList, getVideoList, video, getVideo}
+  return { videoListGenre, getVideoListGenre, videoListWeather, getVideoListWeather, video, getVideo}
 })
