@@ -13,10 +13,9 @@ import ReviewUpdate from '@/components/review/ReviewUpdate.vue'
 import ReviewCreate from '@/components/review/ReviewCreate.vue'
 import ReviewList from '@/components/review/ReviewList.vue'
 import ProductList from '@/components/product/ProductList.vue'
-import SportList from '@/components/Sport/SportList.vue'
-import SportDetail from '@/components/Sport/SportDetail.vue'
+import VideoWeatherList from '@/components/videoWeather/VideoWeatherList.vue'
 import WeatherForecast from '@/components/weather/WeatherForecast.vue'
-import SportListItem from '@/components/Sport/SportListItem.vue'
+import VideoWeatherListItem from '@/components/videoWeather/VideoWeatherListItem.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,13 +37,13 @@ const router = createRouter({
         },
         {
           path: "",
-          name: "sportList",
-          component: SportList,
+          name: "VideoWeatherList",
+          component: VideoWeatherList,
           children: [
             {
-              path: "/sportListItem",
-              name: "sportListItem",
-              component: SportListItem
+              path: "/VideoWeatherListItem",
+              name: "VideoWeatherListItem",
+              component: VideoWeatherListItem
             },
           ]
         },
@@ -54,12 +53,6 @@ const router = createRouter({
           component: WeatherForecast
         },
       ]
-    },
-    
-    {
-      path: "/:userId/:spname",
-      name: "sportDetail",
-      component: SportDetail
     },
     {
       path: "/:youtubeId",

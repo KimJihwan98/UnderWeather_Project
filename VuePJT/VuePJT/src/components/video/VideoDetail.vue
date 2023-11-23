@@ -1,10 +1,10 @@
 <template>
+  <!-- <br />
   <br />
   <br />
   <br />
   <br />
-  <br />
-  <br />
+  <br /> -->
 
   <div class="tit1"> 
     <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
@@ -25,7 +25,8 @@
       ></iframe>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">장르 : {{ vstore.video.genre }}</li>
+        <li class="list-group-item" v-if=(vstore.video.genre)>장르 : {{ vstore.video.genre }}</li>
+        <li class="list-group-item" v-if=(vstore.video.weather)>듣기 좋은 날 : {{ vstore.video.weather }}</li>
         <li class="list-group-item">
           채널 이름 : {{ vstore.video.channelName }}
         </li>

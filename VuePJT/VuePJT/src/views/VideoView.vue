@@ -1,47 +1,48 @@
 <template>
   <div class="main">
-    <div class="container">
+    <div class="videoList-container">
       <div class="videoList">
         <VideoList />
       </div>
-
-      <br />
-      <hr />
-      <br />
-      <div class="weather">
-        <WeatherForecast />
-      </div>
     </div>
-
-    <br />
-    <hr />
-    <br />
-    <div>
-      <SportList />
+    <div class="weather">
+      <WeatherForecast />
+    </div>
+    <div class="videoWeather-container">
+      <div>
+        <VideoWeatherList />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import VideoList from "@/components/video/VideoList.vue";
-import SportList from "@/components/sport/SportList.vue";
+import VideoWeatherList from "@/components/videoWeather/VideoWeatherList.vue";
 import WeatherForecast from "@/components/weather/WeatherForecast.vue";
 
 </script>
 
 <style scoped>
-
-
-
 .weather {
   position: fixed;
   margin: auto;
-  right: 20px;
+  right: 150px;
   top: 100px;
 }
-
-.container {
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.videoList-container {
   display: flex;
   justify-content: center;
+  height: 500px;
+}
+
+.videoWeather-container {
+  display: flex;
+  justify-content: center;
+  height: 400px;
 }
 </style>

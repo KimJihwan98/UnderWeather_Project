@@ -1,15 +1,10 @@
 <template>
-  <div
-    class="realmain"
-    :style="{
-      'background-image': `url(/assets/bgImgs/sunny.jpg)`,
-    }"
-  >
-    <HeaderNav :user="user" @logout="logout" />
-    <div class="section">
-      <RouterView @login-user="loginUser" />
+    <div class="realmain" :style="{'background-image': `url(/assets/bgImgs/sunny.jpg)`,}">
+      <HeaderNav :user="user" @logout="logout" />
+      <div class="section">
+        <RouterView @login-user="loginUser" />
+      </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -73,11 +68,11 @@ const loginUser = (loginUser) => {
 <style scoped>
 @font-face {
   font-family: "BookkMyungjo-Bd";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
-    format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
+
 .routers-back {
   background-color: rgb(18, 129, 233);
 }
@@ -99,6 +94,7 @@ const loginUser = (loginUser) => {
 .text-center {
   text-align: center;
 }
+
 .realmain {
   background-size: cover;
 }
@@ -108,6 +104,7 @@ const loginUser = (loginUser) => {
 }
 
 .section {
+  padding: 0 0 0 200px;
   width: 80%;
 }
 </style>

@@ -8,7 +8,7 @@ const REST_VIDEO_API = `http://localhost:8080/api/Video`;
 export const useVideoStore = defineStore('video', () => {
   const videoListGenre = ref([])
   const getVideoListGenre = function(genre) {
-    axios.get(`${REST_VIDEO_API}/genre`)
+    axios.get(`${REST_VIDEO_API}/genre?genre=${genre.value}`)
       .then((response) => {
         console.log(response.data);
         videoListGenre.value = response.data;

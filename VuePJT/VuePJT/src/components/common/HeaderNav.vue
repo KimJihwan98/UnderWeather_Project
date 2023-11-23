@@ -1,9 +1,8 @@
 <template>
-  <header>
-    <nav class="header-nav">
+  <header class="header-nav">
+    <!-- <nav class="header-nav"> -->
       <div>
-        <RouterLink to="/" class="logo"><br />UnderWeather</RouterLink>
-
+        <RouterLink to="/" class="logo">UnderWeather</RouterLink>
       </div>
       <!-- <div>
         <a href="#" v-if="getUser" @click="logout" class="logout">로그아웃</a>
@@ -12,7 +11,7 @@
           >회원가입</RouterLink
         >
       </div> -->
-    </nav>
+    <!-- </nav> -->
   </header>
 </template>
 
@@ -39,7 +38,10 @@ const logout = () => {
 }
 
 header {
-  height: 70px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   /* background-color: rgb(192, 197, 184); */
   line-height: 70px;
   padding: 0px 30px;

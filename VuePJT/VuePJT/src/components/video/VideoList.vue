@@ -1,58 +1,53 @@
 <template>
+  <!-- <br />
   <br />
   <br />
   <br />
   <br />
-  <br />
-  <br />
-  <div class="container">
-    <!-- <div class="text-center">
+  <br /> -->
+  <div>
+    <div class="nav-container">
+      <!-- <div class="text-center">
               <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
           </div> -->
-    <ul class="nav nav-tabs">
-      <!-- <p>{{ genre }}</p> -->
-      <li class="nav-item" @click="changeGenreName(`pop`)">
-        <a class="nav-link" :class="check1" aria-current="page" href="#">POP</a>
-      </li>
-      <li class="nav-item" @click="changeGenreName(`kPop`)">
-        <a class="nav-link" :class="check2" href="#">K-POP</a>
-      </li>
-      <li class="nav-item" @click="changeGenreName(`ballad`)">
-        <a class="nav-link" :class="check3" href="#">발라드</a>
-      </li>
-      <li class="nav-item" @click="changeGenreName(`hipHop`)">
-        <a class="nav-link" :class="check4" href="#">힙합</a>
-      </li>
-      <li class="nav-item" @click="changeGenreName(`classic`)">
-        <a class="nav-link" :class="check5" href="#">클래식</a>
-      </li>
-      <li class="nav-item" @click="changeGenreName(`rock`)">
-        <a class="nav-link" :class="check6" href="#">락</a>
-      </li>
-    </ul>
+      <ul class="nav nav-tabs">
+        <li class="nav-item" @click="changeGenreName(`pop`)">
+          <a class="nav-link" :class="check1" aria-current="page" href="#">POP</a>
+        </li>
+        <li class="nav-item" @click="changeGenreName(`kPop`)">
+          <a class="nav-link" :class="check2" href="#">K-POP</a>
+        </li>
+        <li class="nav-item" @click="changeGenreName(`ballad`)">
+          <a class="nav-link" :class="check3" href="#">발라드</a>
+        </li>
+        <li class="nav-item" @click="changeGenreName(`hipHop`)">
+          <a class="nav-link" :class="check4" href="#">힙합</a>
+        </li>
+        <li class="nav-item" @click="changeGenreName(`classic`)">
+          <a class="nav-link" :class="check5" href="#">클래식</a>
+        </li>
+        <li class="nav-item" @click="changeGenreName(`rock`)">
+          <a class="nav-link" :class="check6" href="#">락</a>
+        </li>
+      </ul>
 
-  </div>
-  <!-- Bootstrap Carousel -->
-  <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
-        :class="{ active: index === current }">
-        <div class="d-flex">
-          <VideoListItem v-for="video in group" :key="video.youtubeId" :video="video" />
+    </div>
+    <!-- Bootstrap Carousel -->
+    <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
+          :class="{ active: index === current }">
+          <div class="d-flex">
+            <VideoListItem v-for="video in group" :key="video.youtubeId" :video="video" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="button1">
+      <button type="button" class="btn btn-link" @click="prev">◀</button>
+      <button type="button" class="btn btn-link" @click="next">▶</button>
 
-
-
-  <!-- <ul>
-      <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
-  </ul> -->
-  <div class="button1">
-    <button type="button" class="btn btn-link" @click="prev">◀</button>
-    <button type="button" class="btn btn-link" @click="next">▶</button>
-
+    </div>
   </div>
 </template>
 
@@ -66,22 +61,22 @@ const store = useVideoStore();
 const genre = ref("pop");
 
 const check1 = computed(() => {
-  if (genre === "pop") return { active: true };
+  if (genre.value === "pop") return { active: true };
 });
 const check2 = computed(() => {
-  if (genre === "kPop") return { active: true };
+  if (genre.value === "kPop") return { active: true };
 });
 const check3 = computed(() => {
-  if (genre === "ballad") return { active: true };
+  if (genre.value === "ballad") return { active: true };
 });
 const check4 = computed(() => {
-  if (genre === "hipHop") return { active: true };
+  if (genre.value === "hipHop") return { active: true };
 });
 const check5 = computed(() => {
-  if (genre === "classic") return { active: true };
+  if (genre.value === "classic") return { active: true };
 });
 const check6 = computed(() => {
-  if (genre === "rock") return { active: true };
+  if (genre.value === "rock") return { active: true };
 });
 
 
@@ -91,6 +86,7 @@ const changeGenreName = (newGenre) => {
 
 watch(genre, () => {
   store.getVideoListGenre(genre);
+  // console.log(store.VideoListItem(genre));
   current.value = 0;
 });
 
@@ -102,10 +98,10 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoListGenre.length - 1)) % (Math.floor(store.videoListGenre.length / 3) + 1);
+    (current.value + (store.videoListGenre.length - 1)) % (Math.ceil(store.videoListGenre.length / 3));
 };
 const next = function () {
-  current.value = (current.value + 1) % (Math.floor(store.videoListGenre.length / 3) + 1);
+  current.value = (current.value + 1) % (Math.ceil(store.videoListGenre.length / 3));
 };
 
 const groupedVideos = computed(() => {
@@ -129,12 +125,20 @@ const groupedVideos = computed(() => {
   color: rgb(15, 129, 236);
 }
 
-.container {
+.nav-container {
   display: flex;
   justify-content: center;
+}
+
+
+button {
+  padding: 5px;
+  width: 40px;
 }
 
 .vili {
   margin: auto;
 }
+
+
 </style>

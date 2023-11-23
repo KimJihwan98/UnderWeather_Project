@@ -1,10 +1,10 @@
 <template>
+  <!-- <br />
   <br />
   <br />
   <br />
   <br />
-  <br />
-  <br />
+  <br /> -->
   <div class="container">
     <!-- <div class="text-center">
               <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
@@ -32,7 +32,7 @@
       <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
         :class="{ active: index === current }">
         <div class="d-flex">
-          <SportListItem v-for="video in group" :key="video.youtubeId" :video="video" />
+          <VideoWeatherListItem v-for="video in group" :key="video.youtubeId" :video="video" />
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 
 <script setup>
 import { useVideoStore } from "@/stores/video";
-import SportListItem from "@/components/Sport/SportListItem.vue";
+import VideoWeatherListItem from "@/components/videoWeather/VideoWeatherListItem.vue";
 import { onMounted, ref, watch, computed } from "vue";
 
 const store = useVideoStore();
@@ -60,16 +60,16 @@ const store = useVideoStore();
 const weather = ref("sunny");
 
 const check1 = computed(() => {
-  if (weather === "sunny") return { active: true };
+  if (weather.value === "sunny") return { active: true };
 });
 const check2 = computed(() => {
-  if (weather === "cloudy") return { active: true };
+  if (weather.value === "cloudy") return { active: true };
 });
 const check3 = computed(() => {
-  if (weather === "rainy") return { active: true };
+  if (weather.value === "rainy") return { active: true };
 });
 const check4 = computed(() => {
-  if (weather === "snowy") return { active: true };
+  if (weather.value === "snowy") return { active: true };
 });
 
 
@@ -90,10 +90,10 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoListWeather.length - 1)) % (Math.floor(store.videoListWeather.length / 3) + 1);
+    (current.value + (store.videoListWeather.length - 1)) % (Math.ceil(store.videoListWeather.length / 3));
 };
 const next = function () {
-  current.value = (current.value + 1) % (Math.floor(store.videoListWeather.length / 3) + 1);
+  current.value = (current.value + 1) % (Math.ceil(store.videoListWeather.length / 3));
 };
 
 const groupedVideos = computed(() => {
@@ -109,6 +109,11 @@ const groupedVideos = computed(() => {
 .button1 {
   display: flex;
   justify-content: center;
+}
+
+button {
+  padding: 5px;
+  width: 40px;
 }
 
 .btn-link {

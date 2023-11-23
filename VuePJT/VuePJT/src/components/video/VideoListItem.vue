@@ -5,7 +5,7 @@
       :src="`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`"
     />
     <hr />
-    <br />
+    <!-- <br /> -->
   </li>
 </template>
 
@@ -30,7 +30,7 @@ const getVideo = function () {
 
 <style scoped>
 .image {
-  width: 100%;
-  height: 100%;
+  width: 380px;
+  height: 300px;
 }
 </style>

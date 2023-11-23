@@ -4,10 +4,10 @@
 <mapper namespace="com.playlist.model.dao.VideoDao">
 
     <select id="selectAllVideo" resultType="Video">
-    	select * from video order by viewCnt DESC
+    	select * from video
     </select>
     
     <select id="selectGenreVideo" parameterType="string" resultType="Video">
-    	select * from video where genre = #{genre}
+    	select * from video where genre = #{genre} order by idx
     </select>
 </mapper>
