@@ -1,28 +1,22 @@
-create database wellnessdb;
+create database playlistdb;
 
-USE wellnessdb;
+USE playlistdb;
 
 CREATE TABLE `Video` (
   `youtubeId` VARCHAR(50) PRIMARY KEY NOT NULL,
   `title` VARCHAR(100) NOT NULL,
-  `fitPartName` VARCHAR(20) NOT NULL,
   `channelName` VARCHAR(20) NOT NULL,
   `url` VARCHAR(100) NOT NULL,
+  `genre` VARCHAR(20),
+  `weather` VARCHAR(20),
   `viewCnt` LONG
-);
-
-CREATE TABLE Sport (
-  spName VARCHAR(50) PRIMARY KEY NOT NULL,
-  spImg VARCHAR(200)
 );
 
 CREATE TABLE `User` (
   `userId` VARCHAR(20) PRIMARY KEY NOT NULL,
   `password` VARCHAR(50) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `preferSport` VARCHAR(50),
-  `location` VARCHAR(50),
-   FOREIGN KEY (`preferSport`) REFERENCES `Sport`(`spName`) 
+  `location` VARCHAR(50)
 );
 
 CREATE TABLE `Review` (
@@ -37,50 +31,26 @@ CREATE TABLE `Review` (
   FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
 );
 
-CREATE TABLE `Grass` (
-  `gId` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `userId` VARCHAR(20) NOT NULL,
-  `index` INT NOT NULL,
-  `img` VARCHAR(200),
-  `title` VARCHAR(50) NOT NULL,
-  `content` LONGTEXT,
-  FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
-);
 
-CREATE TABLE `Product` (
-  `pId` VARCHAR(50) PRIMARY KEY NOT NULL,
-  `youtubeId` VARCHAR(50) NOT NULL,
-  `price` LONG NOT NULL,
-  `pUrl` VARCHAR(100) NOT NULL,
-  FOREIGN KEY (`youtubeId`) REFERENCES `Video`(`youtubeId`)
+CREATE TABLE `Singer` (
+  `sId` VARCHAR(50) PRIMARY KEY NOT NULL,
+  `sName` VARCHAR(50) NOT NULL,
+  `genre` VARCHAR(50) NOT NULL
 );
 
 INSERT INTO Video
-VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "전신", "ThankyouBUBU", "https://www.youtube.com/embed/gMaB-fG4u4g", 0),
-("swRNeYw1JkY", "하루 15분! 전신 칼로리 불태우는 다이어트 운동", "전신", "ThankyouBUBU", "https://www.youtube.com/embed/swRNeYw1JkY", 0),
-("54tTYO-vU2E", "상체 다이어트 최고의 운동 BEST [팔뚝살/겨드랑이살/등살/가슴어깨라인]", "상체", "ThankyouBUBU", "https://www.youtube.com/embed/54tTYO-vU2E", 0),
-("QqqZH3j_vH0", "상체비만 다이어트 최고의 운동 [상체 핵매운맛]", "상체", "ThankyouBUBU", "https://www.youtube.com/embed/QqqZH3j_vH0", 0),
-("tzN6ypk6Sps", "하체운동이 중요한 이유? 이것만 보고 따라하자 ! [하체운동 교과서]", "하체", "김강민", "https://www.youtube.com/embed/tzN6ypk6Sps", 0),
-("u5OgcZdNbMo","저는 하체 식주의자 입니다", "하체","GYM종국", "https://www.youtube.com/embed/u5OgcZdNbMo", 0),
-("PjGcOP-TQPE", "11자복근 복부 최고의 운동 [복근 핵매운맛]", "복부", "ThankyouBUBU", "https://www.youtube.com/embed/PjGcOP-TQPE", 0),
-("7TLk7pscICk", "(Sub)누워서하는 5분 복부운동!! 효과보장! (매일 2주만 해보세요!)", "복부", "SomiFit", "https://www.youtube.com/embed/7TLk7pscICk", 0);
+VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "ThankyouBUBU", "https://www.youtube.com/embed/gMaB-fG4u4g", '장르', '날씨', 0)
 
 
-INSERT INTO Video
-VALUES ("A5MzlPgNcJM", "[ENG] (근육통주의!!!!) 🔥올인원🔥 전신 근력운동 50분 홈트레이닝", "전신", "힙으뜸", "https://www.youtube.com/watch?v=A5MzlPgNcJM", 0),
-("cMkZ6A7wngk", "[ENG/ 전신 올인원 운동] 유튜브에서 다이어트 전신운동 찾았어요? 이제 딱 이거 하나만 해요!", "전신", "DanoTV", "https://www.youtube.com/watch?v=cMkZ6A7wngk", 0);
 
 
-INSERT INTO Sport(spName, spImg)
-VALUES ("축구", NULL);
-
-INSERT INTO User(userId,  password, name, preferSport, location)
+INSERT INTO User(userId,  password, name, location)
 VALUES ("cha", '1234', "아름", "축구", "청량리");
 
-INSERT INTO User(userId,  password,name, preferSport, location)
-VALUES ("ssafy01", '1234',"재현", "축구", "청량리"),
-("ssafy02", '1234', "병수","축구", "청량리"),
-("ssafy03", '1234', "농구","축구", "청량리");
+INSERT INTO User(userId,  password,name, location)
+VALUES ("ssafy01", '1234',"재현",  "청량리"),
+("ssafy02", '1234', "병수", "청량리"),
+("ssafy03", '1234', "민정", "청량리");
 
 INSERT INTO Review(title,  youtubeId, userId, content, viewCnt)
 VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", 0),
@@ -90,7 +60,5 @@ VALUES ("최고", 'gMaB-fG4u4g', "ssafy01", "최고입니다", 0),
 
 select * from Video;
 select * from User;
-select * from Sport;
 select * from Review;
-select * from Product;
-select * from Grass;
+select * from Singer;

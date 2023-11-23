@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+  </div>
 
 
 
@@ -123,6 +124,4 @@ const groupedVideos = computed(() => {
 .vili {
   margin: auto;
 }
-
-
 </style>
