@@ -1,5 +1,4 @@
 <template>
-
   <br />
   <br />
   <br />
@@ -13,9 +12,7 @@
     <ul class="nav nav-tabs">
       <!-- <p>{{ fitPartName }}</p> -->
       <li class="nav-item" @click="changeFitPartName(`전신`)">
-        <a class="nav-link" :class="check1" aria-current="page" href="#"
-          >전신</a
-        >
+        <a class="nav-link" :class="check1" aria-current="page" href="#">전신</a>
       </li>
       <li class="nav-item" @click="changeFitPartName(`상체`)">
         <a class="nav-link" :class="check2" href="#">상체</a>
@@ -27,26 +24,19 @@
         <a class="nav-link" :class="check4" href="#">복부</a>
       </li>
     </ul>
-</div>
-    <!-- Bootstrap Carousel -->
-    <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div
-          class="carousel-item"
-          v-for="(group, index) in groupedVideos"
-          :key="index"
-          :class="{ active: index === current }"
-        >
-          <div class="d-flex">
-            <VideoListItem
-              v-for="video in group"
-              :key="video.youtubeId"
-              :video="video"
-            />
-          </div>
+
+  </div>
+  <!-- Bootstrap Carousel -->
+  <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" v-for="(group, index) in groupedVideos" :key="index"
+        :class="{ active: index === current }">
+        <div class="d-flex">
+          <VideoListItem v-for="video in group" :key="video.youtubeId" :video="video" />
         </div>
       </div>
     </div>
+
 
 
   <!-- <ul>
@@ -87,7 +77,7 @@ const changeFitPartName = (newName) => {
 
 watch(fitPartName, () => {
   store.getVideoList(fitPartName);
-  current.value=0;
+  current.value = 0;
 });
 
 onMounted(() => {
@@ -98,10 +88,10 @@ const current = ref(0);
 
 const prev = function () {
   current.value =
-    (current.value + (store.videoList.length - 1)) % (Math.floor(store.videoList.length/3)+1);
+    (current.value + (store.videoList.length - 1)) % (Math.floor(store.videoList.length / 3) + 1);
 };
 const next = function () {
-  current.value = (current.value + 1) % (Math.floor(store.videoList.length/3)+1);
+  current.value = (current.value + 1) % (Math.floor(store.videoList.length / 3) + 1);
 };
 
 const groupedVideos = computed(() => {
@@ -124,10 +114,12 @@ const groupedVideos = computed(() => {
   border-color: rgb(15, 129, 236);
   color: rgb(15, 129, 236);
 }
+
 .container {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
+
 .vili {
   margin: auto;
 }

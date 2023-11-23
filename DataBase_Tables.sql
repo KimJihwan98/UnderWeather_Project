@@ -52,7 +52,7 @@ CREATE TABLE `Product` (
   `youtubeId` VARCHAR(50) NOT NULL,
   `price` LONG NOT NULL,
   `pUrl` VARCHAR(100) NOT NULL,
-  FOREIGN KEY (`youtubeId`) REFERENCES `VIdeo`(`youtubeId`)
+  FOREIGN KEY (`youtubeId`) REFERENCES `Video`(`youtubeId`)
 );
 
 INSERT INTO Video
