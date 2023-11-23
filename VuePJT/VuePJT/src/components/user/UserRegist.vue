@@ -54,7 +54,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 .btn{
   background-color: #007bff;
@@ -64,6 +63,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  width: 20%;
 }
 
 .btn:hover {
@@ -81,7 +81,7 @@ fieldset {
   margin-left: 250px;
 }
 .text-center{
-  margin-left: 250px;
+  margin-left: 180px;
 
 }
 </style>

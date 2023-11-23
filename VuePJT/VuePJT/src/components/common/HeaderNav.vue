@@ -1,17 +1,8 @@
 <template>
   <header class="header-nav">
-    <!-- <nav class="header-nav"> -->
       <div>
         <RouterLink to="/" class="logo">UnderWeather</RouterLink>
       </div>
-      <!-- <div>
-        <a href="#" v-if="getUser" @click="logout" class="logout">로그아웃</a>
-        <RouterLink to="/login" v-else>로그인</RouterLink>
-        <RouterLink :to="{ name: 'Regist' }" class="signup"
-          >회원가입</RouterLink
-        >
-      </div> -->
-    <!-- </nav> -->
   </header>
 </template>
 

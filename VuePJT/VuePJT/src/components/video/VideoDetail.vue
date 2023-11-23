@@ -1,16 +1,9 @@
 <template>
-  <!-- <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br /> -->
-
-  <div class="tit1"> 
-    <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
-  </div>
-    <div class="container1">
-  <div class="box">
+  <div class="container1">
+    <div class="box">
+    <div class="tit1"> 
+      <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
+    </div>
 
     <div class="card" style="width:45rem">
       <iframe
@@ -34,15 +27,11 @@
     </div>
   </div>
 
-  <hr />
   <div class="weather">
         <WeatherForecast />
       </div>
     </div>
-  <div class="container">
-    <div class="text-center">
-      
-    </div>
+  <div class="tap-container">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <RouterLink
@@ -86,16 +75,6 @@ const videoURL = computed(() => {
 
 vstore.getVideo(youtubeId);
 
-// // Review리스트
-
-// onMounted(() => {
-//     rstore.getReviewList(youtubeId)
-// })
-
-// const createReview = function () {
-//     router.push({ path: /review/${youtubeId}/create });
-// };
-
 const reviewlist = computed(() => {
   if (route.name === "reviewList") return { active: true };
 });
@@ -124,6 +103,7 @@ h4{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin:auto;
 }
 
@@ -133,5 +113,9 @@ h4{
 }
 .container1{
   display: flex;
+}
+
+.tap-container {
+  padding: 50px;
 }
 </style>

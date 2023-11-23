@@ -1,5 +1,5 @@
 <template>
-    <div class="realmain" :style="{'background-image': `url(/assets/bgImgs/sunny.jpg)`,}">
+    <div class="realmain" :style="{'background-image': `url(/assets/bgImgs/${wstore.weatherName}.jpg)`,}">
       <HeaderNav :user="user" @logout="logout" />
       <div class="section">
         <RouterView @login-user="loginUser" />
@@ -28,7 +28,6 @@ const user = ref(null);
 
 const logout = () => {
   user.value = null;
-  //빈칸
   localStorage.removeItem("loginUser");
   alert("로그아웃 되었습니다.");
   router.push("/");
@@ -38,7 +37,6 @@ const loginUser = (loginUser) => {
   // user 정보 요청 api 주소
   const API_URL = `http://localhost:8080/api/User/list`;
 
-  // axios 요청
   axios
     .get(API_URL)
     .then((res) => {

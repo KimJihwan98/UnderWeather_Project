@@ -1,6 +1,6 @@
 <template>
   <div class="log">
-    <a href="#" v-if="getUser" @click="logout" class="logout">로그아웃 | </a>
+    <a href="/" v-if="getUser" @click="logout" class="logout">로그아웃 | </a>
     <RouterLink to="/login" v-else class="login">로그인 | </RouterLink>
     <RouterLink :to="{ name: 'Regist' }" class="signup">회원가입</RouterLink>
   </div>
@@ -21,11 +21,12 @@
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeUpdate } from "vue";
+import { onMounted, ref, onBeforeUpdate, computed } from "vue";
 import axios from "axios";
 import { useWeatherStore } from "@/stores/weather";
 
 const wstore = useWeatherStore();
+
 
 onMounted(() => {
   wstore.getNowWeather();
@@ -45,6 +46,11 @@ onBeforeUpdate(() => {
     imgSrc = "/assets/weatherImgs/cloudy.png";
   }
 });
+
+const userid = ref('12');
+const getUser = computed(() => !!localStorage.getItem("loginUser"));
+const logout = computed(() => !!localStorage.removeItem("loginUser"));
+
 </script>
 
 <style scoped>

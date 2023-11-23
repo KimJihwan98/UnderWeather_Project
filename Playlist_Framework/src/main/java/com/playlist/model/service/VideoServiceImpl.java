@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.playlist.model.dao.VideoDao;
+import com.playlist.model.dto.Review;
 import com.playlist.model.dto.Video;
 
 @Service
@@ -25,5 +26,10 @@ public class VideoServiceImpl implements VideoService{
 	@Override
 	public List<Video> readGenreVideo(String genre) {
 		return videoDao.selectGenreVideo(genre);
+	}
+	
+	@Override
+	public void createVideo(Video video) {
+		videoDao.insertVideo(video);
 	}
 }
