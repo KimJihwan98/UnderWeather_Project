@@ -1,18 +1,19 @@
 <template>
+
+
     <div class="container">
-      <h2>회원 가입</h2>
+
       <fieldset class="text-center">
-        <label for="id">아이디</label>
-        <input type="text" id="id" v-model="userId" class="view" /><br />
-        <label for="password">비밀번호</label>
+        <h3>회원 가입</h3>
+        <input type="text" id="id" v-model="userId" class="view" placeholder="아이디"  /><br />
         <input
           type="password"
           id="password"
           v-model="password"
           class="view"
+          placeholder="비밀번호"
         /><br />
-        <label for="name">이름</label>
-        <input type="text" id="name" v-model="name" class="view" /><br />
+        <input type="text" id="name" v-model="name" class="view" placeholder="이름"/><br />
         <button class="btn" @click="regist">등록</button>
       </fieldset>
     </div>
@@ -47,4 +48,41 @@
     emit("create-user", user);
   };
   </script>
+  <style scoped>
+.container{
+  width:500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.btn{
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+h3{
+
+  color: white;
+}
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  margin-left: 250px;
+}
+.text-center{
+  margin-left: 250px;
+
+}
+</style>
   

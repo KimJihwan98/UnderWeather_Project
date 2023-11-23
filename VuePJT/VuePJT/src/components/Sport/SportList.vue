@@ -18,6 +18,7 @@
         </li>
       </ul>
     </div>
+
     <!-- Bootstrap Carousel -->
     <div id="sportCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -38,6 +39,7 @@
       &gt
     </button>
   </div>
+
 </template>
 
 <script setup>
@@ -46,6 +48,7 @@ import { onMounted, watch, computed } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
 import { useSportStore } from '@/stores/sport';
 import SportListItem from "@/components/Sport/SportListItem.vue"
+
 
 const sstore = useSportStore();
 const wstore = useWeatherStore();

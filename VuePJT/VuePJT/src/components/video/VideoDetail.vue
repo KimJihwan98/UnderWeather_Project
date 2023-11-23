@@ -1,20 +1,29 @@
 <template>
-  <div>영상 상세정보</div>
-  <div class="container1">
-    <div class="card" style="width: 50rem">
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div class="tit1"> 
+    <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
+  </div>
+    <div class="container1">
+  <div class="box">
+
+    <div class="card" style="width:45rem">
       <iframe
         class="card-img-top"
-        width="560"
-        height="500"
+        width="480"
+        height="400"
         :src="videoURL"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-      <div class="card-body">
-        <p class="card-text">제목 : {{ vstore.video.title }}</p>
-      </div>
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item">부위 : {{ vstore.video.fitPartName }}</li>
         <li class="list-group-item">
@@ -23,11 +32,15 @@
       </ul>
     </div>
   </div>
-  <hr />
 
+  <hr />
+  <div class="weather">
+        <WeatherForecast />
+      </div>
+    </div>
   <div class="container">
     <div class="text-center">
-      <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
+      
     </div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -46,6 +59,10 @@
     </ul>
     <RouterView />
   </div>
+
+
+
+
 </template>
 
 <script setup>
@@ -53,6 +70,7 @@ import { useVideoStore } from "@/stores/video.js";
 import { useReviewStore } from "@/stores/review.js";
 import { useRouter, useRoute } from "vue-router";
 import { computed, onMounted } from "vue";
+import WeatherForecast from "@/components/weather/WeatherForecast.vue";
 
 const vstore = useVideoStore();
 const rstore = useReviewStore();
@@ -87,8 +105,32 @@ const products = computed(() => {
 </script>
 
 <style scoped>
-.container1 {
+
+.card-text{
+  text-align: center;
+}
+h4{
+  color: white;
   display: flex;
+}
+.tit1{
+  display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:auto;
+}
+
+.card-img-top {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.container1{
+  display: flex;
 }
 </style>

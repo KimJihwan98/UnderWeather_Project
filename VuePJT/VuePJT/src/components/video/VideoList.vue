@@ -24,6 +24,7 @@
         <a class="nav-link" :class="check4" href="#">복부</a>
       </li>
     </ul>
+
   </div>
   <!-- Bootstrap Carousel -->
   <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -35,7 +36,6 @@
         </div>
       </div>
     </div>
-  </div>
 
 
 
