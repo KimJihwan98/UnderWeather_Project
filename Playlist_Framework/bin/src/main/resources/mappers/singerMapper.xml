@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.playlist.model.dao.SingerDao">
+    <insert id="registSinger" parameterType="Singer">
+		insert into review (youtubeId, price, pUrl, userId)
+		values (#{youtubeId}, #{price}, #{pUrl}, #{userId})
+    </insert>
+    
+    <select id="singerList" parameterType="string" resultType="Singer">
+    	select * from singer where youtubeId=#{youtubeId}            
+    </select>
+
+    
+   <delete id="deleteSinger" parameterType="int">
+    	delete from singer where sId = #{sId}
+    </delete>
+     
+
+</mapper>

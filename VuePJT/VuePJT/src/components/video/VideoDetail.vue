@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-  </div>
+
 
   <div class="weather">
         <WeatherForecast />
@@ -49,10 +49,6 @@
     </ul>
     <RouterView />
   </div>
-
-
-
-
 </template>
 
 <script setup>
@@ -85,15 +81,14 @@ const products = computed(() => {
 </script>
 
 <style scoped>
-
-.card-text{
+.card-text {
   text-align: center;
 }
-h4{
+h4 {
   color: white;
   display: flex;
 }
-.tit1{
+.tit1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +106,7 @@ h4{
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.container1{
+.container1 {
   display: flex;
 }
 
