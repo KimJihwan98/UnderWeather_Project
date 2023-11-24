@@ -1,15 +1,6 @@
 <template>
-  <!-- <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br /> -->
   <div>
     <div class="nav-container">
-      <!-- <div class="text-center">
-              <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
-          </div> -->
       <ul class="nav nav-tabs">
         <li class="nav-item" @click="changeGenreName(`pop`)">
           <a class="nav-link" :class="check1" aria-current="page" href="#"

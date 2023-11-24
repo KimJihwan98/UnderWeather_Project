@@ -1,31 +1,29 @@
 <template>
-  <!-- <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br /> -->
   <div class="container">
-    <!-- <div class="text-center">
-              <h2 class="my-h2 my-underline">{{ vstore.video.title }}</h2>
-          </div> -->
     <ul class="nav nav-tabs">
-      <!-- <p>{{ genre }}</p> -->
       <li class="nav-item" @click="changeWeatherName(`sunny`)">
-        <a class="nav-link" :class="check1" aria-current="page" href="#">해</a>
+        <a class="nav-link" :class="check1" aria-current="page">
+          <span v-if="(`${heart}` ==='sunny')">💙</span>해
+          <span v-if="(`${heart}` ==='sunny')">💙</span></a>
       </li>
       <li class="nav-item" @click="changeWeatherName(`cloudy`)">
-        <a class="nav-link" :class="check2" href="#">구름</a>
+        <a class="nav-link" :class="check2">
+          <span v-if="(`${heart}` ==='cloudy')">💙</span>구름
+          <span v-if="(`${heart}` ==='cloudy')">💙</span></a>
       </li>
       <li class="nav-item" @click="changeWeatherName(`rainy`)">
-        <a class="nav-link" :class="check3" href="#">비</a>
+        <a class="nav-link" :class="check3">
+          <span v-if="(`${heart}` ==='rainy')">💙</span>비
+          <span v-if="(`${heart}` ==='rainy')">💙</span></a>
       </li>
       <li class="nav-item" @click="changeWeatherName(`snowy`)">
-        <a class="nav-link" :class="check4" href="#">눈</a>
+        <a class="nav-link" :class="check4">
+          <span v-if="(`${heart}` ==='snowy')">💙</span>눈
+          <span v-if="(`${heart}` ==='snowy')">💙</span></a>
       </li>
     </ul>
-
   </div>
+
   <!-- Bootstrap Carousel -->
   <div id="videoCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -38,26 +36,35 @@
     </div>
   </div>
 
-
-
-  <!-- <ul>
-      <VideoListItem v-for="video in store.videoList" :key="video.youtubeId" :video="video" />
-  </ul> -->
   <div class="button1">
     <button type="button" class="btn btn-link" @click="prev">◀</button>
     <button type="button" class="btn btn-link" @click="next">▶</button>
-
   </div>
 </template>
 
 <script setup>
 import { useVideoStore } from "@/stores/video";
+import { useWeatherStore } from "@/stores/weather";
 import VideoWeatherListItem from "@/components/videoWeather/VideoWeatherListItem.vue";
-import { onMounted, ref, watch, computed } from "vue";
+import { onMounted, ref, watch, computed, onBeforeUpdate } from "vue";
+import HeaderNav from "../common/HeaderNav.vue";
 
+const wstore = useWeatherStore();
 const store = useVideoStore();
 
 const weather = ref("sunny");
+const heart = ref('0');
+
+onMounted(() => {
+  wstore.getNowWeather()
+    .then(() => {
+      weather.value = wstore.weatherName;
+      heart.value = wstore.weatherName;
+      store.getVideoListWeather(weather.value);
+    });
+});
+
+
 
 const check1 = computed(() => {
   if (weather.value === "sunny") return { active: true };
@@ -82,9 +89,8 @@ watch(weather, () => {
   current.value = 0;
 });
 
-onMounted(() => {
-  store.getVideoListWeather(weather);
-});
+
+
 
 const current = ref(0);
 

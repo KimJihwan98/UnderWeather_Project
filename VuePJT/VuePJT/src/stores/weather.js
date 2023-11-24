@@ -28,7 +28,7 @@ export const useWeatherStore = defineStore('weather', () => {
             }
         }
         const timeStr = `${times[min_idx]}`;
-        axios
+        return axios
             .get(API_URL, {
                 params: {
                     ServiceKey: import.meta.env.VITE_WEATHER_API_KEY,
@@ -84,7 +84,7 @@ export const useWeatherStore = defineStore('weather', () => {
                 if (nowWeather.pty === 1 || nowWeather.pty === 4) {
                     weatherName.value = "rainy";
                 } else if (nowWeather.pty === 2 || nowWeather.pty === 3) {
-                    weatherName.value = "snow";
+                    weatherName.value = "snowy";
                 } else if (nowWeather.sky === "맑음") {
                     weatherName.value = "sunny";
                 } else {

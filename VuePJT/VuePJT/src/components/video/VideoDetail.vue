@@ -1,49 +1,37 @@
 <template>
-  <!-- <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br /> -->
-
-  <div class="tit1">
-    <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
-  </div>
   <div class="container1">
     <div class="box">
-      <div class="card" style="width: 45rem">
-        <iframe
-          class="card-img-top"
-          width="480"
-          height="400"
-          :src="videoURL"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+    <div class="tit1"> 
+      <h4 class="my-h2 my-underline">{{ vstore.video.title }}</h4>
+    </div>
 
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" v-if="vstore.video.genre">
-            장르 : {{ vstore.video.genre }}
-          </li>
-          <li class="list-group-item" v-if="vstore.video.weather">
-            듣기 좋은 날 : {{ vstore.video.weather }}
-          </li>
-          <li class="list-group-item">
-            채널 이름 : {{ vstore.video.channelName }}
-          </li>
-        </ul>
+    <div class="card" style="width:45rem">
+      <iframe
+        class="card-img-top"
+        width="480"
+        height="400"
+        :src="videoURL"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" v-if=(vstore.video.genre)>장르 : {{ vstore.video.genre }}</li>
+        <li class="list-group-item" v-if=(vstore.video.weather)>듣기 좋은 날 : {{ vstore.video.weather }}</li>
+        <li class="list-group-item">
+          채널 이름 : {{ vstore.video.channelName }}
+        </li>
+      </ul>
+    </div>
+
+
+  <div class="weather">
+        <WeatherForecast />
       </div>
     </div>
-
-    <hr />
-    <div class="weather">
-      <WeatherForecast />
-    </div>
-  </div>
-  <div class="container">
-    <div class="text-center"></div>
+  <div class="tap-container">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <RouterLink
@@ -83,16 +71,6 @@ const videoURL = computed(() => {
 
 vstore.getVideo(youtubeId);
 
-// // Review리스트
-
-// onMounted(() => {
-//     rstore.getReviewList(youtubeId)
-// })
-
-// const createReview = function () {
-//     router.push({ path: /review/${youtubeId}/create });
-// };
-
 const reviewlist = computed(() => {
   if (route.name === "reviewList") return { active: true };
 });
@@ -120,7 +98,8 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  flex-direction: column;
+  margin:auto;
 }
 
 .card-img-top {
@@ -129,5 +108,9 @@ h4 {
 }
 .container1 {
   display: flex;
+}
+
+.tap-container {
+  padding: 50px;
 }
 </style>

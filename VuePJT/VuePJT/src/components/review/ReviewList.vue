@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <h2>리뷰 목록</h2>
         <button @click="createReview"> 리뷰 작성하기 </button>
         <hr>
         <!-- <ReviewSerachInput /> -->
@@ -50,5 +49,7 @@ const createReview = function () {
 </script>
 
 <style scoped>
-
+    .container {
+        padding: 20px;
+    }
 </style>

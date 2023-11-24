@@ -12,6 +12,19 @@ public class Video {
 	
 	public Video() {}
 	
+	
+	
+	public Video(String youtubeId, String title, String channelName, String url, String genre, String weather) {
+		this.youtubeId = youtubeId;
+		this.title = title;
+		this.channelName = channelName;
+		this.url = url;
+		this.genre = genre;
+		this.weather = weather;
+	}
+
+
+
 	public Video(String youtubeId, String title, String channelName, String url, String genre, String weather,
 			int viewCnt) {
 		this.youtubeId = youtubeId;

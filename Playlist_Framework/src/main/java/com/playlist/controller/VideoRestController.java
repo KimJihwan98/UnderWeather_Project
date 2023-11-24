@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.playlist.model.dto.Review;
 import com.playlist.model.dto.Video;
 import com.playlist.model.service.VideoService;
 
@@ -30,5 +33,11 @@ public class VideoRestController {
 	public ResponseEntity<?> selectGenreVideo(String genre) {
 		List<Video> videos = videoService.readGenreVideo(genre);
 		return new ResponseEntity<List<Video>>(videos, HttpStatus.OK);
+	}
+	
+	@PostMapping("/Video")
+	public ResponseEntity<?> write(@RequestBody Video Video) {
+		videoService.createVideo(Video);
+		return new ResponseEntity<Video>(Video, HttpStatus.CREATED);
 	}
 }

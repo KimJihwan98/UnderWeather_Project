@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <fieldset class="text-center">
+
       <h3>로그인</h3>
       <input
         type="text"
@@ -17,6 +18,7 @@
         class="input-field"
         placeholder="비밀번호"
       /><br />
+
       <button class="login-btn" @click="login">로그인</button>
     </fieldset>
   </div>
@@ -43,7 +45,6 @@ const login = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 fieldset {
@@ -83,6 +84,7 @@ label {
   /* align-items: center;
   justify-content: center; */
   margin-left: 250px;
+
 }
 h3 {
   color: white;
