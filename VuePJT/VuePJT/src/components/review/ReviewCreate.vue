@@ -109,6 +109,7 @@ fieldset {
 }
 .container1 {
   display: flex;
+  padding: 50px 0 0 0;
 }
 
 .nav-link {

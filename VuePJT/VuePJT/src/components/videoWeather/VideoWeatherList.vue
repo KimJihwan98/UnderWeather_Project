@@ -52,7 +52,7 @@ import HeaderNav from "../common/HeaderNav.vue";
 const wstore = useWeatherStore();
 const store = useVideoStore();
 
-const weather = ref("sunny");
+const weather = ref('');
 const heart = ref('0');
 
 onMounted(() => {

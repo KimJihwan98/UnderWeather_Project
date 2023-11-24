@@ -5,7 +5,6 @@
         <RouterView @login-user="loginUser" />
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>

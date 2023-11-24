@@ -45,6 +45,7 @@ const login = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 150px 80px 0 0;
 }
 
 fieldset {

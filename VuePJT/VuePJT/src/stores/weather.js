@@ -81,11 +81,11 @@ export const useWeatherStore = defineStore('weather', () => {
                 //         weatherName.value = "cloudy";
                 //     }
                 // }
-                if (nowWeather.pty === 1 || nowWeather.pty === 4) {
+                if (nowWeather.value.pty === 1 || nowWeather.value.pty === 4) {
                     weatherName.value = "rainy";
-                } else if (nowWeather.pty === 2 || nowWeather.pty === 3) {
+                } else if (nowWeather.value.pty === 2 || nowWeather.value.pty === 3) {
                     weatherName.value = "snowy";
-                } else if (nowWeather.sky === "맑음") {
+                } else if (nowWeather.value.sky === "맑음") {
                     weatherName.value = "sunny";
                 } else {
                     weatherName.value = "cloudy";
